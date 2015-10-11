@@ -5,7 +5,7 @@ How to configure:
 
 1. Build
 2. Move product to somewhere you have easy access to it (or inside of your project root)
-3. Create an `import_config`
+3. Create an `import_config` inside the same directory the binary is for this.
 
 ## Your `import_config` file
 
