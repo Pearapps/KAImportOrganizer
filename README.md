@@ -24,3 +24,7 @@ Must be a JSON string. This defines what files to look at in what directories. F
 
 This looks at the Classes directory for files with either a .h, .m, or .swift file extensions, in order to organize their imports.
 
+### What else needs to be done:
+
+1. Define rules about sorting bracketed imports to always be above quation mark imports in Objective-C
+
