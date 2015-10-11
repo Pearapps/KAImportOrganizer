@@ -7,6 +7,10 @@ How to configure:
 2. Move product to somewhere you have easy access to it (or inside of your project root)
 3. Create an `import_config` inside the same directory the binary is for this.
 
+How it works:
+
+KAImportOrganizer takes all the imports in a file, coalesces them, and then sorts them. It then removes the old import and inserts the new imports. 
+
 ## Your `import_config` file
 
 Must be a JSON string. This defines what files to look at in what directories. For example:
