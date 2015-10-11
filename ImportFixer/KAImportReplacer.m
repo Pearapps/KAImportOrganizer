@@ -39,18 +39,19 @@
     
     NSMutableString *fileContents = [self fileContents].mutableCopy;
 
-    NSArray <NSString *> *oldImportStrings = [_originalImports valueForKey:@"importString"];
-    NSString *importString = [oldImportStrings componentsJoinedByString:@""];
+    NSRange rangeOfFirstObject = [fileContents rangeOfString:[(KAImportStatement *)(_originalImports.firstObject) importString]];
     
-    NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
-    NSString *newImportString = [newImportStrings componentsJoinedByString:@""];
-    
-    NSRange range = [fileContents rangeOfString:importString];
-    
-    if (range.location != NSNotFound) {
-        [fileContents replaceCharactersInRange:range withString:newImportString];
+    for (KAImportStatement *importString in _originalImports) {
+        NSRange range = [fileContents rangeOfString:importString.importString];
+        if (range.location != NSNotFound) {
+            [fileContents deleteCharactersInRange:range];
+        }
     }
     
+    NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
+    NSString *importString = [newImportStrings componentsJoinedByString:@""];
+    
+    [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
     
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
