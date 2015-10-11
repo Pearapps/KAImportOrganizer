@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B94D397C1BCA0120002D70E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D397B1BCA0120002D70E2 /* main.m */; };
 		B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39831BCA062D002D70E2 /* KAImportFinder.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39881BCA0A1E002D70E2 /* KAStreamedLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */; settings = {ASSET_TAGS = (); }; };
 		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; settings = {ASSET_TAGS = (); }; };
 		B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; settings = {ASSET_TAGS = (); }; };
 		B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39941BCA2848002D70E2 /* KAImportFixer.m */; settings = {ASSET_TAGS = (); }; };
@@ -37,8 +36,6 @@
 		B94D397B1BCA0120002D70E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B94D39821BCA062D002D70E2 /* KAImportFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportFinder.h; sourceTree = "<group>"; };
 		B94D39831BCA062D002D70E2 /* KAImportFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportFinder.m; sourceTree = "<group>"; };
-		B94D39861BCA0A1E002D70E2 /* KAStreamedLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAStreamedLineReader.h; sourceTree = "<group>"; };
-		B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAStreamedLineReader.m; sourceTree = "<group>"; };
 		B94D398A1BCA15B8002D70E2 /* KALineReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KALineReader.h; sourceTree = "<group>"; };
 		B94D398B1BCA1659002D70E2 /* KAImportSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportSorter.h; sourceTree = "<group>"; };
 		B94D398C1BCA1659002D70E2 /* KAImportSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportSorter.m; sourceTree = "<group>"; };
@@ -116,8 +113,6 @@
 				B94D398A1BCA15B8002D70E2 /* KALineReader.h */,
 				B94D399F1BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.h */,
 				B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */,
-				B94D39861BCA0A1E002D70E2 /* KAStreamedLineReader.h */,
-				B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */,
 			);
 			name = LineReader;
 			sourceTree = "<group>";
@@ -241,7 +236,6 @@
 				B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */,
 				B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */,
 				B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */,
-				B94D39881BCA0A1E002D70E2 /* KAStreamedLineReader.m in Sources */,
 				B94D397C1BCA0120002D70E2 /* main.m in Sources */,
 				B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */,
 				B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */,
@@ -361,6 +355,7 @@
 				B94D39811BCA0120002D70E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

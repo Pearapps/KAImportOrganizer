@@ -17,15 +17,13 @@
 
 @implementation KAImportFixer
 
-- (instancetype)init {
-    self = [super init];
-    
+- (void)organize {
     KASettings *settings = [KASettingsReader readSettings];
     NSTimeInterval time = [[NSDate date] timeIntervalSinceReferenceDate];
-
+    
     for (NSString *directory in settings.directories) {
         NSURL *URL = [NSURL fileURLWithPath:directory];
-//        NSURL *URL = [NSURL fileURLWithPath:[[NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"] stringByAppendingPathComponent:@"DirectoryToSearch"]];
+        //        NSURL *URL = [NSURL fileURLWithPath:[[NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"] stringByAppendingPathComponent:@"DirectoryToSearch"]];
         
         KASourceFileLocator *sourceFileLocator = [[KASourceFileLocator alloc] initWithDirectoryToLocateSourceFilesIn:URL acceptedPathExtensions:settings.fileExtensions];
         
@@ -47,14 +45,9 @@
         }
         
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-
+        
     }
-    NSLog(@"%f", [[NSDate date] timeIntervalSinceReferenceDate] - time);
-
-    
-    return self;
+    NSLog(@"Completed in %f seconds", [[NSDate date] timeIntervalSinceReferenceDate] - time);
 }
-
-
 
 @end

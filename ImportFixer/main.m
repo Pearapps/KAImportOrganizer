@@ -12,7 +12,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        KAImportFixer *fixer = [[KAImportFixer alloc] init];
+      [[[KAImportFixer alloc] init] organize];
         
     }
     return 0;

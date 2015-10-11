@@ -10,4 +10,6 @@
 
 @interface KAImportFixer : NSObject
 
+- (void)organize;
+
 @end

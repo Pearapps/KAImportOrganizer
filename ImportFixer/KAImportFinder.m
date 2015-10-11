@@ -7,7 +7,6 @@
 //
 
 #import "KAImportFinder.h"
-#import "KAStreamedLineReader.h"
 #import "KALineReader.h"
 #import "KAImportStatement.h"
 #import "KAWholeFileLoadingLineReader.h"
@@ -41,7 +40,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     id <KALineReader> lineReader = [self lineReader];
     NSMutableArray *lines = [NSMutableArray new];
     
-    NSArray *preprocessorJawners = @[@"#elif", @"#if", @"#ifdef", @"#else"];
+    NSArray *preprocessorConditionals = @[@"#elif", @"#if", @"#ifdef", @"#else"];
     
     NSMutableArray *currentLinesArray = [NSMutableArray new];
     [lines addObject:currentLinesArray];
@@ -49,7 +48,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     while ([lineReader hasAnotherLine]) {
         NSString *line = [lineReader readLine];
         
-        if (stringContainsOneOfTheseStrings(line, preprocessorJawners)) {
+        if (stringContainsOneOfTheseStrings(line, preprocessorConditionals)) {
             currentLinesArray = [NSMutableArray new];
             [lines addObject:currentLinesArray];
         }
