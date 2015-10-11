@@ -1,5 +1,5 @@
 # KAImportOrganizer
-Organizes Objective-C and Swift imports
+Organizes (sorts) Objective-C and Swift imports.
 
 How to configure:
 
