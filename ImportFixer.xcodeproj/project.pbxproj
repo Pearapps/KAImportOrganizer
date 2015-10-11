@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B94D397C1BCA0120002D70E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D397B1BCA0120002D70E2 /* main.m */; };
+		B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39831BCA062D002D70E2 /* KAImportFinder.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39881BCA0A1E002D70E2 /* KAStreamedLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */; settings = {ASSET_TAGS = (); }; };
+		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39941BCA2848002D70E2 /* KAImportFixer.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39971BCA285B002D70E2 /* KAImportReplacer.m */; settings = {ASSET_TAGS = (); }; };
+		B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B94D39761BCA0120002D70E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B94D39781BCA0120002D70E2 /* ImportFixer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ImportFixer; sourceTree = BUILT_PRODUCTS_DIR; };
+		B94D397B1BCA0120002D70E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B94D39821BCA062D002D70E2 /* KAImportFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportFinder.h; sourceTree = "<group>"; };
+		B94D39831BCA062D002D70E2 /* KAImportFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportFinder.m; sourceTree = "<group>"; };
+		B94D39861BCA0A1E002D70E2 /* KAStreamedLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAStreamedLineReader.h; sourceTree = "<group>"; };
+		B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAStreamedLineReader.m; sourceTree = "<group>"; };
+		B94D398A1BCA15B8002D70E2 /* KALineReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KALineReader.h; sourceTree = "<group>"; };
+		B94D398B1BCA1659002D70E2 /* KAImportSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportSorter.h; sourceTree = "<group>"; };
+		B94D398C1BCA1659002D70E2 /* KAImportSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportSorter.m; sourceTree = "<group>"; };
+		B94D398F1BCA1EDD002D70E2 /* KAImportStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportStatement.h; sourceTree = "<group>"; };
+		B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportStatement.m; sourceTree = "<group>"; };
+		B94D39931BCA2848002D70E2 /* KAImportFixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportFixer.h; sourceTree = "<group>"; };
+		B94D39941BCA2848002D70E2 /* KAImportFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportFixer.m; sourceTree = "<group>"; };
+		B94D39961BCA285B002D70E2 /* KAImportReplacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportReplacer.h; sourceTree = "<group>"; };
+		B94D39971BCA285B002D70E2 /* KAImportReplacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportReplacer.m; sourceTree = "<group>"; };
+		B94D399B1BCA2F85002D70E2 /* KASourceFileLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASourceFileLocator.h; sourceTree = "<group>"; };
+		B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASourceFileLocator.m; sourceTree = "<group>"; };
+		B94D399F1BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAWholeFileLoadingLineReader.h; sourceTree = "<group>"; };
+		B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAWholeFileLoadingLineReader.m; sourceTree = "<group>"; };
+		B94D39AE1BCAF7C2002D70E2 /* KASettingsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASettingsReader.h; sourceTree = "<group>"; };
+		B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettingsReader.m; sourceTree = "<group>"; };
+		B94D39B21BCAF7EA002D70E2 /* KASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASettings.h; sourceTree = "<group>"; };
+		B94D39B31BCAF7EA002D70E2 /* KASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettings.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B94D39751BCA0120002D70E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B94D396F1BCA0120002D70E2 = {
+			isa = PBXGroup;
+			children = (
+				B94D397A1BCA0120002D70E2 /* ImportFixer */,
+				B94D39791BCA0120002D70E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B94D39791BCA0120002D70E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B94D39781BCA0120002D70E2 /* ImportFixer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B94D397A1BCA0120002D70E2 /* ImportFixer */ = {
+			isa = PBXGroup;
+			children = (
+				B94D397B1BCA0120002D70E2 /* main.m */,
+				B94D39B11BCAF7C6002D70E2 /* SettingsReader */,
+				B94D399A1BCA2905002D70E2 /* ImportFixer */,
+				B94D399E1BCA2F89002D70E2 /* SourceFileLocator */,
+				B94D39991BCA2861002D70E2 /* ImportReplacer */,
+				B94D39921BCA1EE3002D70E2 /* ImportStatment */,
+				B94D398E1BCA165D002D70E2 /* ImportSorter */,
+				B94D39891BCA159C002D70E2 /* LineReader */,
+				B94D39851BCA063F002D70E2 /* ImportFinder */,
+			);
+			path = ImportFixer;
+			sourceTree = "<group>";
+		};
+		B94D39851BCA063F002D70E2 /* ImportFinder */ = {
+			isa = PBXGroup;
+			children = (
+				B94D39821BCA062D002D70E2 /* KAImportFinder.h */,
+				B94D39831BCA062D002D70E2 /* KAImportFinder.m */,
+			);
+			name = ImportFinder;
+			sourceTree = "<group>";
+		};
+		B94D39891BCA159C002D70E2 /* LineReader */ = {
+			isa = PBXGroup;
+			children = (
+				B94D398A1BCA15B8002D70E2 /* KALineReader.h */,
+				B94D399F1BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.h */,
+				B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */,
+				B94D39861BCA0A1E002D70E2 /* KAStreamedLineReader.h */,
+				B94D39871BCA0A1E002D70E2 /* KAStreamedLineReader.m */,
+			);
+			name = LineReader;
+			sourceTree = "<group>";
+		};
+		B94D398E1BCA165D002D70E2 /* ImportSorter */ = {
+			isa = PBXGroup;
+			children = (
+				B94D398B1BCA1659002D70E2 /* KAImportSorter.h */,
+				B94D398C1BCA1659002D70E2 /* KAImportSorter.m */,
+			);
+			name = ImportSorter;
+			sourceTree = "<group>";
+		};
+		B94D39921BCA1EE3002D70E2 /* ImportStatment */ = {
+			isa = PBXGroup;
+			children = (
+				B94D398F1BCA1EDD002D70E2 /* KAImportStatement.h */,
+				B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */,
+			);
+			name = ImportStatment;
+			sourceTree = "<group>";
+		};
+		B94D39991BCA2861002D70E2 /* ImportReplacer */ = {
+			isa = PBXGroup;
+			children = (
+				B94D39961BCA285B002D70E2 /* KAImportReplacer.h */,
+				B94D39971BCA285B002D70E2 /* KAImportReplacer.m */,
+			);
+			name = ImportReplacer;
+			sourceTree = "<group>";
+		};
+		B94D399A1BCA2905002D70E2 /* ImportFixer */ = {
+			isa = PBXGroup;
+			children = (
+				B94D39931BCA2848002D70E2 /* KAImportFixer.h */,
+				B94D39941BCA2848002D70E2 /* KAImportFixer.m */,
+			);
+			name = ImportFixer;
+			sourceTree = "<group>";
+		};
+		B94D399E1BCA2F89002D70E2 /* SourceFileLocator */ = {
+			isa = PBXGroup;
+			children = (
+				B94D399B1BCA2F85002D70E2 /* KASourceFileLocator.h */,
+				B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */,
+			);
+			name = SourceFileLocator;
+			sourceTree = "<group>";
+		};
+		B94D39B11BCAF7C6002D70E2 /* SettingsReader */ = {
+			isa = PBXGroup;
+			children = (
+				B94D39AE1BCAF7C2002D70E2 /* KASettingsReader.h */,
+				B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */,
+				B94D39B21BCAF7EA002D70E2 /* KASettings.h */,
+				B94D39B31BCAF7EA002D70E2 /* KASettings.m */,
+			);
+			name = SettingsReader;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B94D39771BCA0120002D70E2 /* ImportFixer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B94D397F1BCA0120002D70E2 /* Build configuration list for PBXNativeTarget "ImportFixer" */;
+			buildPhases = (
+				B94D39741BCA0120002D70E2 /* Sources */,
+				B94D39751BCA0120002D70E2 /* Frameworks */,
+				B94D39761BCA0120002D70E2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImportFixer;
+			productName = ImportFixer;
+			productReference = B94D39781BCA0120002D70E2 /* ImportFixer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B94D39701BCA0120002D70E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Kenneth Parker Ackerson";
+				TargetAttributes = {
+					B94D39771BCA0120002D70E2 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = B94D39731BCA0120002D70E2 /* Build configuration list for PBXProject "ImportFixer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B94D396F1BCA0120002D70E2;
+			productRefGroup = B94D39791BCA0120002D70E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B94D39771BCA0120002D70E2 /* ImportFixer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B94D39741BCA0120002D70E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */,
+				B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */,
+				B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */,
+				B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */,
+				B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */,
+				B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */,
+				B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */,
+				B94D39881BCA0A1E002D70E2 /* KAStreamedLineReader.m in Sources */,
+				B94D397C1BCA0120002D70E2 /* main.m in Sources */,
+				B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */,
+				B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B94D397D1BCA0120002D70E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B94D397E1BCA0120002D70E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B94D39801BCA0120002D70E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B94D39811BCA0120002D70E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B94D39731BCA0120002D70E2 /* Build configuration list for PBXProject "ImportFixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B94D397D1BCA0120002D70E2 /* Debug */,
+				B94D397E1BCA0120002D70E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B94D397F1BCA0120002D70E2 /* Build configuration list for PBXNativeTarget "ImportFixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B94D39801BCA0120002D70E2 /* Debug */,
+				B94D39811BCA0120002D70E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B94D39701BCA0120002D70E2 /* Project object */;
+}
