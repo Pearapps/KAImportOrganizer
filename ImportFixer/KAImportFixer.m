@@ -21,9 +21,11 @@
     KASettings *settings = [KASettingsReader readSettings];
     NSTimeInterval time = [[NSDate date] timeIntervalSinceReferenceDate];
     
+    __block NSInteger importCount = 0;
+    __block NSInteger fileCount = 0;
+    
     for (NSString *directory in settings.directories) {
         NSURL *URL = [NSURL fileURLWithPath:directory];
-        //        NSURL *URL = [NSURL fileURLWithPath:[[NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"] stringByAppendingPathComponent:@"DirectoryToSearch"]];
         
         KASourceFileLocator *sourceFileLocator = [[KASourceFileLocator alloc] initWithDirectoryToLocateSourceFilesIn:URL acceptedPathExtensions:settings.fileExtensions];
         
@@ -33,11 +35,13 @@
         NSArray *files = [sourceFileLocator files];
         
         for (NSURL *file in files) {
+            fileCount += files.count;
             dispatch_group_async(group, queue, ^{
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
                 NSArray *firstImports = [importFinder importStrings];
                 
                 for (NSArray *importStrings in firstImports) {
+                    importCount += importStrings.count;
                     KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
                     [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file] replace];
                 }
@@ -45,9 +49,9 @@
         }
         
         dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-        
     }
-    NSLog(@"Completed in %f seconds", [[NSDate date] timeIntervalSinceReferenceDate] - time);
+    
+    NSLog(@"Sorted %ld imports in %ld files - in %f seconds", importCount, fileCount, [[NSDate date] timeIntervalSinceReferenceDate] - time);
 }
 
 @end

@@ -35,23 +35,22 @@
 
 - (void)replace {
     if (_originalImports.count == 0) { return; }
-   // if ([self.importStrings isEqual:self.sortedImportStatements]) { return; }
+    if ([self.originalImports isEqual:self.sortedImportStatements]) { return; }
     
     NSMutableString *fileContents = [self fileContents].mutableCopy;
 
-    NSRange rangeOfFirstObject = [fileContents rangeOfString:[(KAImportStatement *)(_originalImports.firstObject) importString]];
-    
-    for (KAImportStatement *importString in _originalImports) {
-        NSRange range = [fileContents rangeOfString:importString.importString];
-        if (range.location != NSNotFound) {
-            [fileContents deleteCharactersInRange:range];
-        }
-    }
+    NSArray <NSString *> *oldImportStrings = [_originalImports valueForKey:@"importString"];
+    NSString *importString = [oldImportStrings componentsJoinedByString:@""];
     
     NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
-    NSString *importString = [newImportStrings componentsJoinedByString:@""];
+    NSString *newImportString = [newImportStrings componentsJoinedByString:@""];
     
-    [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
+    NSRange range = [fileContents rangeOfString:importString];
+    
+    if (range.location != NSNotFound) {
+        [fileContents replaceCharactersInRange:range withString:newImportString];
+    }
+    
     
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }

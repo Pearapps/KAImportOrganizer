@@ -19,7 +19,7 @@
     NSDictionary *settings = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:config] options:0 error:&error];
     
     if (!settings && error) {
-        NSLog(@"Could not read import_config file.");
+        NSLog(@"Could not read import_config file. %@", error);
         exit(132);
     }
     
