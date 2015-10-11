@@ -46,6 +46,15 @@
         if (range.location != NSNotFound) {
             [fileContents deleteCharactersInRange:range];
         }
+        else {
+            NSRange range = [fileContents rangeOfString:[importString.importString stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
+            if (range.location != NSNotFound) {
+                [fileContents deleteCharactersInRange:range];
+            }
+            else {
+                NSLog(@"%@", self.fileURL);
+            }
+        }
     }
     
     NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
