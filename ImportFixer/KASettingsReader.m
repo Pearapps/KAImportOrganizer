@@ -15,7 +15,7 @@
 
 + (KASettings *)readSettings {
 #ifdef DEBUG
-    return [[KASettings alloc] initWithDirectories:@[TestDirectory] fileExtensions:@[@"h"]];
+    return [[KASettings alloc] initWithDirectories:@[TestDirectory] fileExtensions:@[@"h", @"swift", @"m"]];
 #else
     NSURL *config = [NSURL fileURLWithPath:@"import_config"];
     
