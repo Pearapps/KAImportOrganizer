@@ -24,13 +24,13 @@
 - (NSString *)importStringByTrimmingTokensFromImportString:(NSString *)importString {
     const NSArray *strings = @[@"<", @">", @"\""];
     
-    NSString *returnString = importString;
+    NSMutableString *returnString = [importString mutableCopy];
     
     for (NSString *string in strings) {
-        returnString = [returnString stringByReplacingOccurrencesOfString:string withString:@""];
+        [returnString replaceOccurrencesOfString:string withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [returnString length])];
     }
     
-    return returnString;
+    return [returnString copy];
 }
 
 - (BOOL)isEqual:(id)object {

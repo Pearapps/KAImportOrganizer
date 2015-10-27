@@ -8,10 +8,10 @@
 
 #import "KASourceFileLocator.h"
 
-@interface KASourceFileLocator ()
-
-@property (nonatomic, readonly) NSURL *directoryURL;
-@property (nonatomic, readonly) NSArray *pathExtensions;
+@interface KASourceFileLocator () {
+    NSURL *_directoryURL;
+    NSArray *_pathExtensions;
+}
 
 @end
 
@@ -27,7 +27,7 @@
 }
 
 - (NSArray *)files {
-    return [self filesInDirectory:self.directoryURL];
+    return [self filesInDirectory:_directoryURL];
 }
 
 - (NSArray *)filesInDirectory:(NSURL *)directoryURL {
@@ -44,7 +44,7 @@
         NSNumber *isDirectory = nil;
         [fileURL getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
         
-        if (!isDirectory.boolValue && [self.pathExtensions containsObject:fileURL.pathExtension]) {
+        if (!isDirectory.boolValue && [_pathExtensions containsObject:fileURL.pathExtension]) {
             [files addObject:fileURL];
         }
     }
