@@ -9,9 +9,14 @@
 #import "KASettingsReader.h"
 #import "KASettings.h"
 
+#define TestDirectory @"/Users/Kenny/Desktop/Chains"
+
 @implementation KASettingsReader
 
 + (KASettings *)readSettings {
+#ifdef DEBUG
+    return [[KASettings alloc] initWithDirectories:@[TestDirectory] fileExtensions:@[@"h"]];
+#else
     NSURL *config = [NSURL fileURLWithPath:@"import_config"];
     
     NSError *error = nil;
@@ -27,6 +32,7 @@
     NSArray *directories = settings[@"directories"];
     
     return [[KASettings alloc] initWithDirectories:directories fileExtensions:fileExtensions];
+#endif
 }
 
 @end

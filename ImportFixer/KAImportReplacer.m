@@ -35,7 +35,7 @@
 
 - (void)replace {
     if (_originalImports.count == 0) { return; }
-    if ([self.originalImports isEqual:self.sortedImportStatements]) { return; }
+    if ([_originalImports isEqual:_sortedImportStatements]) { return; }
     
     NSMutableString *fileContents = [self fileContents].mutableCopy;
 
@@ -61,6 +61,5 @@
     
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
-
 
 @end
