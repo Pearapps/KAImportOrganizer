@@ -40,7 +40,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     id <KALineReader> lineReader = [self lineReader];
     NSMutableArray *lines = [NSMutableArray new];
     
-    NSArray *preprocessorConditionals = @[@"#elif", @"#if", @"#ifdef", @"#else", @"//", @"/**", @"*/"];
+    NSArray *preprocessorConditionals = @[@"#elif", @"#if", @"#ifdef", @"#else", @"//", @"/**", @"*/", @"*"];
     
     NSMutableArray *currentLinesArray = [NSMutableArray new];
     [lines addObject:currentLinesArray];
