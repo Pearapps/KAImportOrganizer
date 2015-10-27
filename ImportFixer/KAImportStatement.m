@@ -53,7 +53,7 @@
     if ([importString characterAtIndex:0] == '#') {
         return KAImportTypePound;
     }
-    else if ([importString characterAtIndex:0] == '@' && ![importString containsString:@"testable"]) {
+    else if ([importString characterAtIndex:0] == '@' && ![importString containsString:@"@testable"]) {
         return KAImportTypeAtSign;
     }
     else {
