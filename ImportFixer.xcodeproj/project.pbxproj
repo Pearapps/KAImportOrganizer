@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B94D397C1BCA0120002D70E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D397B1BCA0120002D70E2 /* main.m */; };
-		B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39831BCA062D002D70E2 /* KAImportFinder.m */; settings = {ASSET_TAGS = (); }; };
-		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39941BCA2848002D70E2 /* KAImportFixer.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39971BCA285B002D70E2 /* KAImportReplacer.m */; settings = {ASSET_TAGS = (); }; };
-		B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; settings = {ASSET_TAGS = (); }; };
-		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; settings = {ASSET_TAGS = (); }; };
+		B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39831BCA062D002D70E2 /* KAImportFinder.m */; };
+		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; };
+		B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; };
+		B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39941BCA2848002D70E2 /* KAImportFixer.m */; };
+		B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39971BCA285B002D70E2 /* KAImportReplacer.m */; };
+		B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */; };
+		B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */; };
+		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; };
+		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -332,6 +332,7 @@
 		B94D39811BCA0120002D70E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = fast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

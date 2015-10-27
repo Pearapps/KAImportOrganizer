@@ -33,9 +33,9 @@
         dispatch_group_t group = dispatch_group_create();
         
         NSArray *files = [sourceFileLocator files];
-        
+        fileCount += files.count;
+
         for (NSURL *file in files) {
-            fileCount += files.count;
             dispatch_group_async(group, queue, ^{
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
                 NSArray *firstImports = [importFinder importStrings];
