@@ -51,9 +51,6 @@
             if (range.location != NSNotFound) {
                 [fileContents deleteCharactersInRange:range];
             }
-            else {
-                NSLog(@"%@", self.fileURL);
-            }
         }
     }
     
