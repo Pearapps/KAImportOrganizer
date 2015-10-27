@@ -50,11 +50,11 @@
 }
 
 - (KAImportType)importTypeForImportString:(NSString *)importString {
-    if ([importString characterAtIndex:0] == '@') {
-        return KAImportTypeAtSign;
-    }
-    else if ([importString characterAtIndex:0] == '#') {
+    if ([importString characterAtIndex:0] == '#') {
         return KAImportTypePound;
+    }
+    else if ([importString characterAtIndex:0] == '@' && ![importString containsString:@"testable"]) {
+        return KAImportTypeAtSign;
     }
     else {
         return KAImportTypeSwift;
