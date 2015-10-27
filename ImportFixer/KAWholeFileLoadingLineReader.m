@@ -22,7 +22,7 @@
     self = [super init];
     
     _fileURL = URL;
-    const NSString * const fileContents = [[NSString alloc] initWithContentsOfURL:_fileURL encoding:NSUTF8StringEncoding error:nil];;
+    const NSString * const fileContents = [[NSString alloc] initWithContentsOfURL:_fileURL encoding:NSUTF8StringEncoding error:nil];
     
     _allLines = [fileContents componentsSeparatedByString:@"\n"];
     

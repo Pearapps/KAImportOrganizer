@@ -40,7 +40,6 @@
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
                 
                 for (NSArray *importStrings in [importFinder importStrings]) {
-
                     importCount += importStrings.count;
                     KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
                     [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file] replace];
