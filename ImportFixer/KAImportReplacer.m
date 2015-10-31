@@ -66,5 +66,4 @@
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
-
 @end
