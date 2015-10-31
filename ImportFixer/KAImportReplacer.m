@@ -57,6 +57,10 @@
     NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
     NSString *importString = [newImportStrings componentsJoinedByString:@""];
     
+    while ([importString containsString:@"\n\n"]) {
+        importString = [importString stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"];
+    }
+    
     [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
     
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
