@@ -36,7 +36,7 @@
 }
 
 - (NSString *)readLine {
-    NSString *line = [_allLines[_currentOffset] stringByAppendingString:@"\n"];
+    NSString *line = _allLines[_currentOffset];
     _currentOffset++;
     return line;
 }

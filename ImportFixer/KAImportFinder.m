@@ -53,7 +53,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
             [lines addObject:currentLinesArray];
         }
         else if ([self isImportStatement:line]) {
-            [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:line]];
+            [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:[line stringByAppendingString:@"\n"]]];
         }
         else if ([line containsString:@"@implementation"] || [line containsString:@"@interface"]) {
             break;
