@@ -31,6 +31,7 @@ This looks at the Classes directory for files with either a .h, .m, or .swift fi
 ## Limitations:
 
 ~~1. Doesn't play well with comments that intermingled with import statements.~~ - This should now be working for the most part.
+
 1. Adds extra lines to end of imports if there were lines in between imports before sorting.
 
 ### What else needs to be done:
