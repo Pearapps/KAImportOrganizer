@@ -39,11 +39,16 @@
             dispatch_group_async(group, queue, ^{
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
                 NSArray *firstImports = [importFinder importStrings];
+                NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
+                NSInteger i = 0;
                 for (NSArray *importStrings in firstImports) {
+                    const NSNumber *numberOfNewlines = newlinesAmounts[i];
+                    i++;
+                    
                     importCount += importStrings.count;
                     KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
-                    [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file] replace];
+                    [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file numberOfNewlines:numberOfNewlines.integerValue] replace];
                 }
             });
         }

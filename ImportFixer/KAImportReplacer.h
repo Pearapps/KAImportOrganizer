@@ -11,7 +11,7 @@
 @class KAImportStatement;
 @interface KAImportReplacer : NSObject
 
-- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL;
+- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines;
 
 - (void)replace;
 

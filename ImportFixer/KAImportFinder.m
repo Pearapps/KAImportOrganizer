@@ -15,6 +15,9 @@
 
 @property (nonatomic, readonly) id <KALineReader> lineReader;
 
+@property (nonatomic, readonly) NSArray *numbersOfNewLines;
+@property (nonatomic, readonly) NSArray *importStrings;
+
 @end
 
 @implementation KAImportFinder
@@ -23,6 +26,7 @@
     self = [super init];
     
     _lineReader = lineReader;
+    [self analyze];
     
     return self;
 }
@@ -36,31 +40,48 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     return NO;
 }
 
-- (NSArray *)importStrings {
+- (void)analyze {
     id <KALineReader> lineReader = [self lineReader];
     NSMutableArray *lines = [NSMutableArray new];
+    NSMutableArray *rangeOfNewLines = [[NSMutableArray alloc] init];
     
     NSArray *preprocessorConditionals = @[@"#elif", @"#if", @"#ifdef", @"#else", @"//", @"/**", @"*/", @"*"];
     
     NSMutableArray *currentLinesArray = [NSMutableArray new];
-    [lines addObject:currentLinesArray];
     
+    [lines addObject:[NSMutableArray new]];
+    [rangeOfNewLines addObject:@(0)];
+    
+    NSInteger currentCountOfNewLines = 0;
+    BOOL hasFoundImportYet = NO;
+        
     while ([lineReader hasAnotherLine]) {
         NSString *line = [lineReader readLine];
         
+        [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count-1 withObject:@(currentCountOfNewLines)];
+        
         if (stringContainsOneOfTheseStrings(line, preprocessorConditionals)) {
             currentLinesArray = [NSMutableArray new];
+            
             [lines addObject:currentLinesArray];
+            [rangeOfNewLines addObject:@(0)];
+            currentCountOfNewLines = 0;
         }
         else if ([self isImportStatement:line]) {
+            hasFoundImportYet = YES;
             [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:line]];
+        }
+        else if ([line isEqual:@"\n"]) {
+            if (hasFoundImportYet) { currentCountOfNewLines++; }
         }
         else if ([line containsString:@"@implementation"] || [line containsString:@"@interface"]) {
             break;
         }
     }
     
-    return lines;
+    
+    _importStrings = lines;
+    _numbersOfNewLines = rangeOfNewLines;
 }
 
 - (BOOL)isImportStatement:(NSString *)string {

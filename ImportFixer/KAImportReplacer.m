@@ -14,17 +14,19 @@
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *originalImports;
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *sortedImportStatements;
 @property (nonatomic, readonly) NSURL *fileURL;
+@property (nonatomic, readonly) NSInteger numberOfNewlines;
 
 @end
 
 @implementation KAImportReplacer
 
-- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL {
+- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines {
     self = [super init];
     
     _fileURL = fileURL;
     _originalImports = [importStrings copy];
     _sortedImportStatements = [sortedImportStatements copy];
+    _numberOfNewlines = numberOfNewlines;
     
     return self;
 }
@@ -57,11 +59,24 @@
     NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
     NSString *importString = [newImportStrings componentsJoinedByString:@""];
     
-    while ([importString containsString:@"\n\n"]) {
-        importString = [importString stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"];
-    }
-    
     [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
+    
+    BOOL endSearchForNewLines = NO;
+    NSInteger foundNewlines = 0;
+    
+    while (!endSearchForNewLines && foundNewlines != self.numberOfNewlines) {
+        NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
+        
+        NSString *substring = [fileContents substringWithRange:NSMakeRange(location, 2)];
+        
+        if ([substring isEqualToString:@"\n\n"]) {
+            [fileContents deleteCharactersInRange:NSMakeRange(location, 2)];
+            foundNewlines++;
+        }
+        else {
+            endSearchForNewLines = YES;
+        }
+    }
     
     [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
