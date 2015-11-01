@@ -62,15 +62,15 @@
     [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
     
     BOOL endSearchForNewLines = NO;
-    NSInteger foundNewlines = 0;
+    NSInteger foundNewlines = 1;
     
     while (!endSearchForNewLines && foundNewlines != self.numberOfNewlines) {
         NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
         
-        NSString *substring = [fileContents substringWithRange:NSMakeRange(location, 2)];
+        NSString *substring = [fileContents substringWithRange:NSMakeRange(location, 1)];
         
-        if ([substring isEqualToString:@"\n\n"]) {
-            [fileContents deleteCharactersInRange:NSMakeRange(location, 2)];
+        if ([substring isEqualToString:@"\n"]) {
+            [fileContents deleteCharactersInRange:NSMakeRange(location, 1)];
             foundNewlines++;
         }
         else {
