@@ -65,7 +65,7 @@
     NSInteger foundNewlines = 1;
     
     while (!endSearchForNewLines && foundNewlines != self.numberOfNewlines) {
-        NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
+        const NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
         
         if (location >= importString.length) { break; }
         

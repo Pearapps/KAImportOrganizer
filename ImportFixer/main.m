@@ -11,9 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
       [[[KAImportFixer alloc] init] organize];
-        
     }
     return 0;
 }
