@@ -1,15 +1,15 @@
 //
-//  KAWholeFileLoadingLineReader.h
+//  KAFileStreamLineReader.h
 //  ImportFixer
 //
-//  Created by Kenneth Parker Ackerson on 10/11/15.
+//  Created by Kenneth Parker Ackerson on 11/1/15.
 //  Copyright © 2015 Kenneth Parker Ackerson. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "KALineReader.h"
 
-@interface KAWholeFileLoadingLineReader : NSObject <KALineReader>
+@interface KAFileStreamLineReader : NSObject <KALineReader>
 
 - (instancetype)initWithFileURL:(NSURL *)URL;
 

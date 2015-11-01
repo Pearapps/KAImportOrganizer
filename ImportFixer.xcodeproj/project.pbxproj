@@ -17,6 +17,7 @@
 		B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */; };
 		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; };
 		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; };
+		B95EAF4C1BE67D6500EE1528 /* KAFileStreamLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = B95EAF4B1BE67D6500EE1528 /* KAFileStreamLineReader.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,8 @@
 		B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettingsReader.m; sourceTree = "<group>"; };
 		B94D39B21BCAF7EA002D70E2 /* KASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASettings.h; sourceTree = "<group>"; };
 		B94D39B31BCAF7EA002D70E2 /* KASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettings.m; sourceTree = "<group>"; };
+		B95EAF4A1BE67D6500EE1528 /* KAFileStreamLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAFileStreamLineReader.h; sourceTree = "<group>"; };
+		B95EAF4B1BE67D6500EE1528 /* KAFileStreamLineReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KAFileStreamLineReader.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				B94D398A1BCA15B8002D70E2 /* KALineReader.h */,
 				B94D399F1BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.h */,
 				B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */,
+				B95EAF4A1BE67D6500EE1528 /* KAFileStreamLineReader.h */,
+				B95EAF4B1BE67D6500EE1528 /* KAFileStreamLineReader.mm */,
 			);
 			name = LineReader;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */,
+				B95EAF4C1BE67D6500EE1528 /* KAFileStreamLineReader.mm in Sources */,
 				B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */,
 				B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */,
 				B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */,

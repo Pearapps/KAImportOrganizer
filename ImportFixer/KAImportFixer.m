@@ -14,6 +14,7 @@
 #import "KAWholeFileLoadingLineReader.h"
 #import "KASettings.h"
 #import "KASettingsReader.h"
+#import "KAFileStreamLineReader.h"
 
 @implementation KAImportFixer
 
@@ -37,7 +38,7 @@
 
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
-                KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
+                KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAFileStreamLineReader alloc] initWithFileURL:file]];
                 NSArray *firstImports = [importFinder importStrings];
                 
                 for (NSArray *importStrings in firstImports) {

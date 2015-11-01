@@ -6,6 +6,8 @@
 //  Copyright © 2015 Kenneth Parker Ackerson. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 @protocol KALineReader
 
 - (NSString *)readLine;
