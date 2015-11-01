@@ -45,7 +45,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     NSMutableArray *lines = [NSMutableArray new];
     NSMutableArray *rangeOfNewLines = [[NSMutableArray alloc] init];
     
-    NSArray *preprocessorConditionals = @[@"#elif", @"#if", @"#ifdef", @"#else", @"//", @"/**", @"*/", @"*"];
+    NSArray *preprocessorConditionals = @[@"#elif", @"#endif", @"#if", @"#ifdef", @"#else", @"//", @"/**", @"*/", @"*"];
     
     NSMutableArray *currentLinesArray = [NSMutableArray new];
     

@@ -67,6 +67,8 @@
     while (!endSearchForNewLines && foundNewlines != self.numberOfNewlines) {
         NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
         
+        if (location >= importString.length) { break; }
+        
         NSString *substring = [fileContents substringWithRange:NSMakeRange(location, 1)];
         
         if ([substring isEqualToString:@"\n"]) {
