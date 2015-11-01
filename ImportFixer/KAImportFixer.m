@@ -43,12 +43,12 @@
                 
                 NSInteger i = 0;
                 for (NSArray *importStrings in firstImports) {
-                    const NSNumber *numberOfNewlines = newlinesAmounts[i];
+                    const NSInteger numberOfNewlines = [newlinesAmounts[i] integerValue];
                     i++;
                     
                     importCount += importStrings.count;
                     KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
-                    [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file numberOfNewlines:numberOfNewlines.integerValue] replace];
+                    [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file numberOfNewlines:numberOfNewlines] replace];
                 }
             });
         }
