@@ -36,5 +36,5 @@ This looks at the Classes directory for files with either a .h, .m, or .swift fi
 
 ### What else needs to be done:
 
-1. Define rules about sorting bracketed imports to always be above quation mark imports in Objective-C
+1. Define rules about sorting bracketed imports to always be above quotation mark imports in Objective-C - or a way to provide preference via the config file.
 
