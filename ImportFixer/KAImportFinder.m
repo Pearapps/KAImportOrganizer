@@ -79,7 +79,6 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
         }
     }
     
-    
     _importStrings = lines;
     _numbersOfNewLines = rangeOfNewLines;
 }
