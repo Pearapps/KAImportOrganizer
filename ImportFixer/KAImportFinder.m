@@ -58,7 +58,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     while ([lineReader hasAnotherLine]) {
         NSString *line = [lineReader readLine];
         
-        [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count-1 withObject:@(currentCountOfNewLines)];
+        [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count - 1 withObject:@(currentCountOfNewLines)];
         
         if (stringContainsOneOfTheseStrings(line, preprocessorConditionals)) {
             currentLinesArray = [NSMutableArray new];
