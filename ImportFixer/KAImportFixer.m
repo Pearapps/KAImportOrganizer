@@ -38,8 +38,8 @@
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
-                NSArray *firstImports = [importFinder importStrings];
-                NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
+                const NSArray *firstImports = [importFinder importStrings];
+                const NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
                 NSInteger i = 0;
                 for (NSArray *importStrings in firstImports) {
