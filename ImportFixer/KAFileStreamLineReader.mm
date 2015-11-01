@@ -33,6 +33,7 @@ using namespace std;
 - (BOOL)hasAnotherLine {
     string string;
     if (getline(stream, string)) {
+        string += "\n";
         nextLine = [[NSString alloc] initWithUTF8String:string.c_str()];
         return nextLine != nil;
     }
