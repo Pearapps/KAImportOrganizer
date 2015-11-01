@@ -64,7 +64,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
 }
 
 - (BOOL)isImportStatement:(NSString *)string {
-    if (string.length >= 5 && ([string rangeOfString:@"#import"].location != NSNotFound || [string rangeOfString:@"@import"].location != NSNotFound || [string rangeOfString:@"import"].location != NSNotFound)) {
+    if (string.length >= 5 && stringContainsOneOfTheseStrings(string, @[@"import ", @"#import ", @"@import "])) {
         return YES;
     }
     return NO;
