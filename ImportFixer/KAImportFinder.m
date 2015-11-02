@@ -55,7 +55,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
         else if ([self isImportStatement:line]) {
             [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:line]];
         }
-        else if ([line containsString:@"@implementation"] || [line containsString:@"@interface"]) {
+        else if (stringContainsOneOfTheseStrings(line, @[@"@implementation", @"@interface"])) {
             break;
         }
     }
@@ -64,7 +64,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
 }
 
 - (BOOL)isImportStatement:(NSString *)string {
-    if (string.length >= 5 && ([string rangeOfString:@"#import"].location != NSNotFound || [string rangeOfString:@"@import"].location != NSNotFound || [string rangeOfString:@"import"].location != NSNotFound)) {
+    if (string.length >= 5 && stringContainsOneOfTheseStrings(string, @[@"import ", @"#import ", @"@import "])) {
         return YES;
     }
     return NO;
