@@ -32,6 +32,7 @@
         _imports = imports;
         _numbersOfNewlines = numbersOfNewlines;
         _originalContents = originalContents;
+        [self replace];
     }
     
     return self;
