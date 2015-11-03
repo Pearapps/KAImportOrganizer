@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B94BD54E1BE852E500A54D84 /* KAImportStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B94BD54D1BE852E500A54D84 /* KAImportStatementTests.m */; };
+		B94BD5551BE8566400A54D84 /* KAImportStatement.h in Sources */ = {isa = PBXBuildFile; fileRef = B94D398F1BCA1EDD002D70E2 /* KAImportStatement.h */; };
+		B94BD5561BE8566400A54D84 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; };
 		B94D397C1BCA0120002D70E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D397B1BCA0120002D70E2 /* main.m */; };
 		B94D39841BCA062D002D70E2 /* KAImportFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39831BCA062D002D70E2 /* KAImportFinder.m */; };
 		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; };
@@ -18,6 +21,16 @@
 		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; };
 		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B94BD5531BE8564600A54D84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B94D39701BCA0120002D70E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B94D39771BCA0120002D70E2;
+			remoteInfo = ImportFixer;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B94D39761BCA0120002D70E2 /* CopyFiles */ = {
@@ -32,6 +45,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B94BD54B1BE852E500A54D84 /* ImportFixerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImportFixerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B94BD54D1BE852E500A54D84 /* KAImportStatementTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KAImportStatementTests.m; sourceTree = "<group>"; };
+		B94BD54F1BE852E500A54D84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B94D39781BCA0120002D70E2 /* ImportFixer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ImportFixer; sourceTree = BUILT_PRODUCTS_DIR; };
 		B94D397B1BCA0120002D70E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B94D39821BCA062D002D70E2 /* KAImportFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportFinder.h; sourceTree = "<group>"; };
@@ -56,6 +72,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B94BD5481BE852E500A54D84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B94D39751BCA0120002D70E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,10 +89,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B94BD54C1BE852E500A54D84 /* ImportFixerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B94BD5571BE85A7700A54D84 /* KAImportStatement */,
+				B94BD54F1BE852E500A54D84 /* Info.plist */,
+			);
+			path = ImportFixerTests;
+			sourceTree = "<group>";
+		};
+		B94BD5571BE85A7700A54D84 /* KAImportStatement */ = {
+			isa = PBXGroup;
+			children = (
+				B94BD54D1BE852E500A54D84 /* KAImportStatementTests.m */,
+			);
+			name = KAImportStatement;
+			sourceTree = "<group>";
+		};
 		B94D396F1BCA0120002D70E2 = {
 			isa = PBXGroup;
 			children = (
 				B94D397A1BCA0120002D70E2 /* ImportFixer */,
+				B94BD54C1BE852E500A54D84 /* ImportFixerTests */,
 				B94D39791BCA0120002D70E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				B94D39781BCA0120002D70E2 /* ImportFixer */,
+				B94BD54B1BE852E500A54D84 /* ImportFixerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +218,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B94BD54A1BE852E500A54D84 /* ImportFixerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B94BD5521BE852E500A54D84 /* Build configuration list for PBXNativeTarget "ImportFixerTests" */;
+			buildPhases = (
+				B94BD5471BE852E500A54D84 /* Sources */,
+				B94BD5481BE852E500A54D84 /* Frameworks */,
+				B94BD5491BE852E500A54D84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B94BD5541BE8564600A54D84 /* PBXTargetDependency */,
+			);
+			name = ImportFixerTests;
+			productName = ImportFixerTests;
+			productReference = B94BD54B1BE852E500A54D84 /* ImportFixerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B94D39771BCA0120002D70E2 /* ImportFixer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B94D397F1BCA0120002D70E2 /* Build configuration list for PBXNativeTarget "ImportFixer" */;
@@ -202,6 +262,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Kenneth Parker Ackerson";
 				TargetAttributes = {
+					B94BD54A1BE852E500A54D84 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					B94D39771BCA0120002D70E2 = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -220,11 +283,32 @@
 			projectRoot = "";
 			targets = (
 				B94D39771BCA0120002D70E2 /* ImportFixer */,
+				B94BD54A1BE852E500A54D84 /* ImportFixerTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		B94BD5491BE852E500A54D84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		B94BD5471BE852E500A54D84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B94BD5551BE8566400A54D84 /* KAImportStatement.h in Sources */,
+				B94BD5561BE8566400A54D84 /* KAImportStatement.m in Sources */,
+				B94BD54E1BE852E500A54D84 /* KAImportStatementTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B94D39741BCA0120002D70E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,7 +328,39 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B94BD5541BE8564600A54D84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B94D39771BCA0120002D70E2 /* ImportFixer */;
+			targetProxy = B94BD5531BE8564600A54D84 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B94BD5501BE852E500A54D84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ImportFixerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pear.ImportFixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B94BD5511BE852E500A54D84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ImportFixerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pear.ImportFixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B94D397D1BCA0120002D70E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,6 +456,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B94BD5521BE852E500A54D84 /* Build configuration list for PBXNativeTarget "ImportFixerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B94BD5501BE852E500A54D84 /* Debug */,
+				B94BD5511BE852E500A54D84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B94D39731BCA0120002D70E2 /* Build configuration list for PBXProject "ImportFixer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
