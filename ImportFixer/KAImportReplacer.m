@@ -15,31 +15,31 @@
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *sortedImportStatements;
 @property (nonatomic, readonly) NSURL *fileURL;
 @property (nonatomic, readonly) NSInteger numberOfNewlines;
+@property (nonatomic, readonly) NSString *originalContents;
 
 @end
 
 @implementation KAImportReplacer
 
-- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines {
+- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines originalContents:(NSString *)originalContents {
     self = [super init];
     
-    _fileURL = fileURL;
-    _originalImports = [importStrings copy];
-    _sortedImportStatements = [sortedImportStatements copy];
-    _numberOfNewlines = numberOfNewlines;
+    if (self) {
+        _originalImports = [originalImports copy];
+        _sortedImportStatements = [sortedImportStatements copy];
+        _fileURL = fileURL;
+        _numberOfNewlines = numberOfNewlines;
+        _originalContents = originalContents;
+    }
     
     return self;
-}
-
-- (NSString *)fileContents {
-    return [[NSString alloc] initWithContentsOfURL:_fileURL encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void)replace {
     if (_originalImports.count == 0) { return; }
     if ([_originalImports isEqual:_sortedImportStatements]) { return; }
     
-    NSMutableString *fileContents = [self fileContents].mutableCopy;
+    NSMutableString *fileContents = _originalContents.mutableCopy;
 
     NSRange rangeOfFirstObject = [fileContents rangeOfString:[(KAImportStatement *)(_originalImports.firstObject) importString]];
     

@@ -11,6 +11,6 @@
 
 @interface KAWholeFileLoadingLineReader : NSObject <KALineReader>
 
-- (instancetype)initWithFileURL:(NSURL *)URL;
+- (instancetype)initWithFileContents:(NSString *)fileContents;
 
 @end
