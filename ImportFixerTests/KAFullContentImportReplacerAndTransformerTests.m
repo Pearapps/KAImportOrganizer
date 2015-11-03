@@ -243,4 +243,133 @@
     XCTAssert([projectedOutcome isEqualToString:transformedString]);
 }
 
+- (void)testMultipleNestedImportSortingAndReplacing {
+    NSArray *originalImports = @[
+                                 @[],
+                                 @[],
+                                 @[],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"@import Kenny;\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"]
+                                     ],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"@import XCTest;\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"@import AppKit;\n"]
+                                     ],
+                                 @[],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"#import \"RootViewController.h\"\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"#import \"hello.h\"\n"]
+
+                                     ]
+                                 ];
+    
+    NSArray *numbers = @[
+                         @0,
+                         @0,
+                         @1,
+                         @2,
+                         @1,
+                         @0,
+                         @0
+                         ];
+    
+    NSString *contents = @"//Some stuff\n"
+    "// hello\n"
+    "@import Kenny;\n"
+    "@import Foundation;\n"
+    "#ifdef DEBUG\n"
+    "@import XCTest;\n"
+    "@import AppKit;\n"
+    "\n"
+    "#endif\n"
+    "// Hi I am kenny\n"
+    "#import \"RootViewController.h\"\n"
+    "#import \"hello.h\"\n"
+    ;
+    
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    
+    NSString *projectedOutcome = @"//Some stuff\n"
+    "// hello\n"
+    "@import Foundation;\n"
+    "@import Kenny;\n"
+    "#ifdef DEBUG\n"
+    "@import AppKit;\n"
+    "@import XCTest;\n"
+    "#endif\n"
+    "// Hi I am kenny\n"
+    "#import \"hello.h\"\n"
+    "#import \"RootViewController.h\"\n"
+    ;
+    
+    XCTAssert([projectedOutcome isEqualToString:transformedString]);
+}
+
+- (void)testMultipleNestedImportSortingAndReplacingWithNewLine {
+    NSArray *originalImports = @[
+                                 @[],
+                                 @[],
+                                 @[],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"@import Kenny;\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"]
+                                     ],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"@import XCTest;\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"@import AppKit;\n"]
+                                     ],
+                                 @[],
+                                 @[
+                                     [[KAImportStatement alloc] initWithImportString:@"#import \"RootViewController.h\"\n"],
+                                     [[KAImportStatement alloc] initWithImportString:@"#import \"hello.h\"\n"]
+                                     
+                                     ]
+                                 ];
+    
+    NSArray *numbers = @[
+                         @0,
+                         @0,
+                         @1,
+                         @2,
+                         @1,
+                         @0,
+                         @2
+                         ];
+    
+    NSString *contents = @"//Some stuff\n"
+    "// hello\n"
+    "@import Kenny;\n"
+    "@import Foundation;\n"
+    "#ifdef DEBUG\n"
+    "@import XCTest;\n"
+    "@import AppKit;\n"
+    "\n"
+    "#endif\n"
+    "// Hi I am kenny\n"
+    "\n"
+    "#import \"RootViewController.h\"\n"
+    "\n"
+    "#import \"hello.h\"\n"
+    ;
+    
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    
+    NSString *projectedOutcome = @"//Some stuff\n"
+    "// hello\n"
+    "@import Foundation;\n"
+    "@import Kenny;\n"
+    "#ifdef DEBUG\n"
+    "@import AppKit;\n"
+    "@import XCTest;\n"
+    "#endif\n"
+    "// Hi I am kenny\n"
+    "\n"
+    "#import \"hello.h\"\n"
+    "#import \"RootViewController.h\"\n"
+    ;
+    
+    XCTAssert([projectedOutcome isEqualToString:transformedString]);
+}
+
 @end
