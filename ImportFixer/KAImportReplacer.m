@@ -37,7 +37,7 @@
 
 - (void)replace {
     if (_originalImports.count == 0) { return; }
-    if ([self.originalImports isEqual:self.sortedImportStatements]) { return; }
+    if ([_originalImports isEqual:_sortedImportStatements]) { return; }
     
     NSMutableString *fileContents = [self fileContents].mutableCopy;
 
