@@ -42,6 +42,26 @@
 }
 
 // Objective-C
+
+- (void)testGroupingIsCorrect {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"@import Foundation;",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"/*",
+                                                                                               @"@import UIKit;",
+                                                                                               ]];
+    NSArray *importStrings = [importFinder importStrings];
+    
+    NSArray *stringsOfFirstGroup = [[importStrings objectAtIndex:1] valueForKey:@"importString"];
+    XCTAssert([stringsOfFirstGroup containsObject:@"@import Foundation;\n"]);
+    XCTAssert([stringsOfFirstGroup containsObject:@"#import \"Kenny.h\"\n"]);
+    
+    NSArray *stringsOfSecondGroup = [[importStrings objectAtIndex:2] valueForKey:@"importString"];
+    
+    XCTAssert([stringsOfSecondGroup containsObject:@"@import UIKit;\n"]);
+}
+
 - (void)testNewlineDoesNotAffectImportReading {
     KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
                                                                                                @"// Hello",
@@ -98,6 +118,43 @@
                                                                                                @"// Hello",
                                                                                                @"@import Foundation;",
                                                                                                @"// Another",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               @"",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
+    
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlinesAndNewlinesBeforeFirstImport {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"",
+                                                                                               @"@import Foundation;",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
+    
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlinesAndNewlinesBeforeFirstImportAndAfterLastImport {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"",
+                                                                                               @"@import Foundation;",
                                                                                                @"#import \"Kenny.h\"",
                                                                                                @"",
                                                                                                @"",
