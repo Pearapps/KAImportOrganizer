@@ -105,7 +105,7 @@
 		B94BD54C1BE852E500A54D84 /* ImportFixerTests */ = {
 			isa = PBXGroup;
 			children = (
-				B94BD5681BE8831E00A54D84 /* KAImportStringTransformerTests.m */,
+				B94BD56B1BE8F3F800A54D84 /* Direct KAImportStringTransformer */,
 				B94BD55F1BE85EDB00A54D84 /* KAImportFinder */,
 				B94BD5571BE85A7700A54D84 /* KAImportStatement */,
 				B94BD54F1BE852E500A54D84 /* Info.plist */,
@@ -139,6 +139,14 @@
 				B94BD5641BE87E6600A54D84 /* KAImportStringTransformer.m */,
 			);
 			name = "String Transformation";
+			sourceTree = "<group>";
+		};
+		B94BD56B1BE8F3F800A54D84 /* Direct KAImportStringTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				B94BD5681BE8831E00A54D84 /* KAImportStringTransformerTests.m */,
+			);
+			name = "Direct KAImportStringTransformer";
 			sourceTree = "<group>";
 		};
 		B94D396F1BCA0120002D70E2 = {
