@@ -323,7 +323,6 @@
                                  @[
                                      [[KAImportStatement alloc] initWithImportString:@"#import \"RootViewController.h\"\n"],
                                      [[KAImportStatement alloc] initWithImportString:@"#import \"hello.h\"\n"]
-                                     
                                      ]
                                  ];
     
