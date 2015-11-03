@@ -35,32 +35,16 @@
         
         NSArray *files = [sourceFileLocator files];
         fileCount += files.count;
-
+        
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
                 NSString *fileContents = [[NSString alloc] initWithContentsOfURL:file encoding:NSUTF8StringEncoding error:nil];
                 
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileContents:fileContents]];
-                const NSArray *firstImports = [importFinder importStrings];
-                const NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
+                NSArray *firstImports = [importFinder importStrings];
+                NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
-                NSInteger i = 0;
-                for (NSArray *importStrings in firstImports) {
-                    const NSInteger numberOfNewlines = [newlinesAmounts[i] integerValue];
-                    i++;
-                    
-                    
-                    if (importStrings.count > 0) {
-                        importCount += importStrings.count;
-                        KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
-                        NSArray *sortedImports = [sorter sortedImports];
-                        
-                        if (![sortedImports isEqualTo:importStrings]) {
-                            [[[KAImportReplacer alloc] initWithFileURL:file importStringTransformer:[[KAImportStringTransformer alloc] initWithOriginalImports:importStrings sortedImportStatements:sortedImports originalContents:fileContents numberOfNewlines:numberOfNewlines]] replace];
-                        }
-                    }
-                    
-                }
+                importCount += [[[KAImportReplacer alloc] initWithFileURL:file imports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents] replace];
             });
         }
         

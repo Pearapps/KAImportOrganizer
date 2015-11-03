@@ -13,8 +13,9 @@
 
 @interface KAImportReplacer : NSObject
 
-- (instancetype)initWithFileURL:(NSURL *)fileURL importStringTransformer:(id <KAStringTransformer>)importStringTransformer;
+- (instancetype)initWithFileURL:(NSURL *)fileURL imports:(NSArray *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents;
 
-- (void)replace;
+// @return The number of imports that were sorted.
+- (NSInteger)replace;
 
 @end

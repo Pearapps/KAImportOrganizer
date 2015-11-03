@@ -16,8 +16,62 @@
 
 @implementation KAImportStringTransformerTests
 
-- (void)testBasicImportCreation {
+- (void)testBasicImportCreationSwift {
+    NSArray *originalImports = @[
+                                 [[KAImportStatement alloc] initWithImportString:@"import Kenny\n"],
+                                 [[KAImportStatement alloc] initWithImportString:@"import Foundation\n"]
+                                 ];
+    
+    NSArray *sortedImports = @[
+                               [[KAImportStatement alloc] initWithImportString:@"import Foundation\n"],
+                               [[KAImportStatement alloc] initWithImportString:@"import Kenny\n"]
+                               ];
+    
+    NSString *contents = @"//Some stuff\n"
+    "// hello\n"
+    "import Kenny\n"
+    "import Foundation\n";
+    
+    NSString *transformedString = [[[KAImportStringTransformer alloc] initWithOriginalImports:originalImports sortedImportStatements:sortedImports originalContents:contents numberOfNewlines:0] transformedString];
+    
+    NSString *projectedOutcome = @"//Some stuff\n"
+    "// hello\n"
+    "import Foundation\n"
+    "import Kenny\n";
+    
+    XCTAssert([projectedOutcome isEqualToString:transformedString]);
+}
 
+- (void)testBasicImportCreationWithNewlineInBetweenSwift {
+    NSArray *originalImports = @[
+                                 [[KAImportStatement alloc] initWithImportString:@"import Kenny\n"],
+                                 [[KAImportStatement alloc] initWithImportString:@"import Foundation\n"]
+                                 ];
+    
+    NSArray *sortedImports = @[
+                               [[KAImportStatement alloc] initWithImportString:@"import Foundation\n"],
+                               [[KAImportStatement alloc] initWithImportString:@"import Kenny\n"]
+                               ];
+    
+    NSString *contents = @"//Some stuff\n"
+    "// hello\n"
+    "import Kenny\n"
+    "\n"
+    "import Foundation\n";
+    
+    NSString *transformedString = [[[KAImportStringTransformer alloc] initWithOriginalImports:originalImports sortedImportStatements:sortedImports originalContents:contents numberOfNewlines:1] transformedString];
+    
+    NSString *projectedOutcome = @"//Some stuff\n"
+    "// hello\n"
+    "import Foundation\n"
+    "import Kenny\n";
+    
+    XCTAssert([projectedOutcome isEqualToString:transformedString]);
+}
+
+// Objective-C
+
+- (void)testBasicImportCreation {
     NSArray *originalImports = @[
                                  [[KAImportStatement alloc] initWithImportString:@"#import \"Kenny.h\"\n"],
                                  [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"]
@@ -33,7 +87,6 @@
     "#import \"Kenny.h\"\n"
     "@import Foundation;\n";
     
-    
     NSString *transformedString = [[[KAImportStringTransformer alloc] initWithOriginalImports:originalImports sortedImportStatements:sortedImports originalContents:contents numberOfNewlines:0] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
@@ -45,7 +98,6 @@
 }
 
 - (void)testBasicImportCreationWithNewlineInBetween {
-    
     NSArray *originalImports = @[
                                  [[KAImportStatement alloc] initWithImportString:@"#import \"Kenny.h\"\n"],
                                  [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"]
@@ -62,7 +114,6 @@
     "\n"
     "@import Foundation;\n";
     
-    
     NSString *transformedString = [[[KAImportStringTransformer alloc] initWithOriginalImports:originalImports sortedImportStatements:sortedImports originalContents:contents numberOfNewlines:1] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
@@ -72,6 +123,8 @@
     
     XCTAssert([projectedOutcome isEqualToString:transformedString]);
 }
+
+
 
 
 @end
