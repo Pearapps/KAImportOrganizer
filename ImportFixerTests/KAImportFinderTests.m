@@ -41,7 +41,8 @@
     return total;
 }
 
-- (void)testNewlineDoesNot {
+// Objective-C
+- (void)testNewlineDoesNotAffectImportReading {
     KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
                                                                                                @"// Hello",
                                                                                                @"@import Foundation;",
@@ -55,7 +56,79 @@
     XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
     XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
     XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 1);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlines {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"@import Foundation;",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
     
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlinesAndACommentInBetweenImports {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"@import Foundation;",
+                                                                                               @"// Another",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
+    
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlinesAndNewlinesAfterLastImport {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"@import Foundation;",
+                                                                                               @"// Another",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               @"",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
+    
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
+}
+
+- (void)testNewlineDoesNotAffectImportReadingWithTwoNextlinesAndPreoprocessorMacros {
+    KAImportFinder *importFinder = [KAImportFinderTests finderWithArrayOfLinesFromSourceCode:@[
+                                                                                               @"// Hello",
+                                                                                               @"@import Foundation;",
+                                                                                               @"#ifdef DEBUG",
+                                                                                               @"#import \"Kenny.h\"",
+                                                                                               @"",
+                                                                                               @"#endif",
+                                                                                               @"",
+                                                                                               @"@import UIKit;",
+                                                                                               ]];
+    NSArray *rawImportStrings = [KAImportFinderTests importStringsFromImportFinder:importFinder];
+    
+    XCTAssert([rawImportStrings containsObject:@"@import Foundation;\n"]);
+    XCTAssert([rawImportStrings containsObject:@"#import \"Kenny.h\"\n"]);
+    XCTAssert([rawImportStrings containsObject:@"@import UIKit;\n"]);
+    XCTAssert([KAImportFinderTests totalNewLinesFromImportFinder:importFinder] == 2);
 }
 
 @end
