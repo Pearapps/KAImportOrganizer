@@ -53,6 +53,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     [rangeOfNewLines addObject:@(0)];
     
     NSInteger currentCountOfNewLines = 0;
+    NSInteger batchedCountOfNewLines = 0;
     BOOL hasFoundImportYet = NO;
         
     while ([lineReader hasAnotherLine]) {
@@ -69,10 +70,12 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
         }
         else if ([self isImportStatement:line]) {
             hasFoundImportYet = YES;
+            currentCountOfNewLines += batchedCountOfNewLines;
+            batchedCountOfNewLines = 0;
             [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:line]];
         }
         else if ([line isEqual:@"\n"]) {
-            if (hasFoundImportYet) { currentCountOfNewLines++; }
+            if (hasFoundImportYet) { batchedCountOfNewLines++; }
         }
         else if ([line containsString:@"@implementation"] || [line containsString:@"@interface"]) {
             break;

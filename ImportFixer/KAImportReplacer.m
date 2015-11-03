@@ -64,7 +64,7 @@
     BOOL endSearchForNewLines = NO;
     NSInteger foundNewlines = 1;
     
-    while (!endSearchForNewLines && foundNewlines != self.numberOfNewlines) {
+    while (!endSearchForNewLines && foundNewlines <= self.numberOfNewlines) {
         const NSInteger location = [fileContents rangeOfString:importString].location + [fileContents rangeOfString:importString].length;
         
         if (location >= fileContents.length) { break; }
