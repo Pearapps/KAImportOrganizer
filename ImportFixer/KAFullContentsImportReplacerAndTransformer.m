@@ -1,32 +1,34 @@
 //
-//  KAImportReplacer.m
+//  KAFullContentsImportReplacerAndTransformer.m
 //  ImportFixer
 //
 //  Created by Kenneth Parker Ackerson on 10/11/15.
 //  Copyright © 2015 Kenneth Parker Ackerson. All rights reserved.
 //
 
-#import "KAImportReplacer.h"
+#import "KAFullContentsImportReplacerAndTransformer.h"
 #import "KAImportStatement.h"
 #import "KAImportStringTransformer.h"
 #import "KAImportSorter.h"
 
-@interface KAImportReplacer ()
+@interface KAFullContentsImportReplacerAndTransformer ()
 
-@property (nonatomic, readonly) NSURL *fileURL;
-@property (nonatomic, readonly) NSArray *imports;
+@property (nonatomic, readonly) NSArray <NSArray <KAImportStatement *> *> *imports;
 @property (nonatomic, readonly) NSArray *numbersOfNewlines;
 @property (nonatomic, readonly) NSString *originalContents;
 
+@property (nonatomic, readonly) NSString *transformedString;
+@property (nonatomic, readonly) BOOL didChangeAnyCharacters;
+@property (nonatomic, readonly) NSInteger importAmount;
+
 @end
 
-@implementation KAImportReplacer
+@implementation KAFullContentsImportReplacerAndTransformer
 
-- (instancetype)initWithFileURL:(NSURL *)fileURL imports:(NSArray *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents {
+- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents {
     self = [super init];
     
     if (self) {
-        _fileURL = fileURL;
         _imports = imports;
         _numbersOfNewlines = numbersOfNewlines;
         _originalContents = originalContents;
@@ -35,7 +37,7 @@
     return self;
 }
 
-- (NSInteger)replace {
+- (void)replace {
     NSString *contents = [_originalContents copy];
     BOOL everChanged = NO;
     
@@ -59,8 +61,9 @@
         }
     }
     
-    if (everChanged) { [contents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil]; }
-    return importAmount;
+    _importAmount = importAmount;
+    _transformedString = contents;
+    _didChangeAnyCharacters = everChanged;
 }
 
 @end

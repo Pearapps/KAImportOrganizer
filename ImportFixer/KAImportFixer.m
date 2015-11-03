@@ -9,7 +9,7 @@
 #import "KAImportFixer.h"
 #import "KAImportFinder.h"
 #import "KAImportSorter.h"
-#import "KAImportReplacer.h"
+#import "KAFullContentsImportReplacerAndTransformer.h"
 #import "KASourceFileLocator.h"
 #import "KAWholeFileLoadingLineReader.h"
 #import "KASettings.h"
@@ -44,7 +44,12 @@
                 NSArray *firstImports = [importFinder importStrings];
                 NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
-                importCount += [[[KAImportReplacer alloc] initWithFileURL:file imports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents] replace];
+                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents];
+                
+                importCount += [importReplacer importAmount];
+                if ([importReplacer didChangeAnyCharacters]) {
+                    [[importReplacer transformedString] writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                }
             });
         }
         

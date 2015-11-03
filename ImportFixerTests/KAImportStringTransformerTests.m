@@ -79,7 +79,7 @@
     
     NSArray *sortedImports = @[
                                [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"],
-                                 [[KAImportStatement alloc] initWithImportString:@"#import \"Kenny.h\"\n"]
+                               [[KAImportStatement alloc] initWithImportString:@"#import \"Kenny.h\"\n"]
                                  ];
     
     NSString *contents = @"//Some stuff\n"

@@ -21,7 +21,7 @@
 		B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D398C1BCA1659002D70E2 /* KAImportSorter.m */; };
 		B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */; };
 		B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39941BCA2848002D70E2 /* KAImportFixer.m */; };
-		B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39971BCA285B002D70E2 /* KAImportReplacer.m */; };
+		B94D39981BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39971BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.m */; };
 		B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */; };
 		B94D39A11BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39A01BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.m */; };
 		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; };
@@ -72,8 +72,8 @@
 		B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportStatement.m; sourceTree = "<group>"; };
 		B94D39931BCA2848002D70E2 /* KAImportFixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportFixer.h; sourceTree = "<group>"; };
 		B94D39941BCA2848002D70E2 /* KAImportFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportFixer.m; sourceTree = "<group>"; };
-		B94D39961BCA285B002D70E2 /* KAImportReplacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportReplacer.h; sourceTree = "<group>"; };
-		B94D39971BCA285B002D70E2 /* KAImportReplacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportReplacer.m; sourceTree = "<group>"; };
+		B94D39961BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAFullContentsImportReplacerAndTransformer.h; sourceTree = "<group>"; };
+		B94D39971BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAFullContentsImportReplacerAndTransformer.m; sourceTree = "<group>"; };
 		B94D399B1BCA2F85002D70E2 /* KASourceFileLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASourceFileLocator.h; sourceTree = "<group>"; };
 		B94D399C1BCA2F85002D70E2 /* KASourceFileLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASourceFileLocator.m; sourceTree = "<group>"; };
 		B94D399F1BCA3E04002D70E2 /* KAWholeFileLoadingLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAWholeFileLoadingLineReader.h; sourceTree = "<group>"; };
@@ -167,6 +167,7 @@
 				B94D399A1BCA2905002D70E2 /* ImportFixer */,
 				B94D399E1BCA2F89002D70E2 /* SourceFileLocator */,
 				B94D39991BCA2861002D70E2 /* ImportReplacer */,
+				B94BD5671BE87FF200A54D84 /* String Transformation */,
 				B94D39921BCA1EE3002D70E2 /* ImportStatment */,
 				B94D398E1BCA165D002D70E2 /* ImportSorter */,
 				B94D39891BCA159C002D70E2 /* LineReader */,
@@ -215,9 +216,8 @@
 		B94D39991BCA2861002D70E2 /* ImportReplacer */ = {
 			isa = PBXGroup;
 			children = (
-				B94D39961BCA285B002D70E2 /* KAImportReplacer.h */,
-				B94D39971BCA285B002D70E2 /* KAImportReplacer.m */,
-				B94BD5671BE87FF200A54D84 /* String Transformation */,
+				B94D39961BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.h */,
+				B94D39971BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.m */,
 			);
 			name = ImportReplacer;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */,
 				B94D399D1BCA2F85002D70E2 /* KASourceFileLocator.m in Sources */,
 				B94D39911BCA1EDD002D70E2 /* KAImportStatement.m in Sources */,
-				B94D39981BCA285B002D70E2 /* KAImportReplacer.m in Sources */,
+				B94D39981BCA285B002D70E2 /* KAFullContentsImportReplacerAndTransformer.m in Sources */,
 				B94D398D1BCA1659002D70E2 /* KAImportSorter.m in Sources */,
 				B94D397C1BCA0120002D70E2 /* main.m in Sources */,
 				B94D39951BCA2848002D70E2 /* KAImportFixer.m in Sources */,
