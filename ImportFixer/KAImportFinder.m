@@ -59,7 +59,6 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     void (^replace)(NSInteger) = ^void(NSInteger currentCountOfNewLines) {
         [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count - 1 withObject:@(currentCountOfNewLines)];
     };
-
     
     while ([lineReader hasAnotherLine]) {
         NSString *line = [lineReader readLine];
