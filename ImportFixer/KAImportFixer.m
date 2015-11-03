@@ -14,6 +14,7 @@
 #import "KAWholeFileLoadingLineReader.h"
 #import "KASettings.h"
 #import "KASettingsReader.h"
+#import "KAImportStringTransformer.h"
 
 @implementation KAImportFixer
 
@@ -48,9 +49,17 @@
                     const NSInteger numberOfNewlines = [newlinesAmounts[i] integerValue];
                     i++;
                     
-                    importCount += importStrings.count;
-                    KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
-                    [[[KAImportReplacer alloc] initWithOriginalImports:importStrings sortedImportStatements:[sorter sortedImports] fileURL:file numberOfNewlines:numberOfNewlines originalContents:fileContents] replace];
+                    
+                    if (importStrings.count > 0) {
+                        importCount += importStrings.count;
+                        KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
+                        NSArray *sortedImports = [sorter sortedImports];
+                        
+                        if (![sortedImports isEqualTo:importStrings]) {
+                            [[[KAImportReplacer alloc] initWithFileURL:file importStringTransformer:[[KAImportStringTransformer alloc] initWithOriginalImports:importStrings sortedImportStatements:sortedImports originalContents:fileContents numberOfNewlines:numberOfNewlines]] replace];
+                        }
+                    }
+                    
                 }
             });
         }

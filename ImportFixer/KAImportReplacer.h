@@ -9,9 +9,11 @@
 @import Foundation;
 
 @class KAImportStatement;
+@protocol KAStringTransformer;
+
 @interface KAImportReplacer : NSObject
 
-- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines originalContents:(NSString *)originalContents;
+- (instancetype)initWithFileURL:(NSURL *)fileURL importStringTransformer:(id <KAStringTransformer>)importStringTransformer;
 
 - (void)replace;
 

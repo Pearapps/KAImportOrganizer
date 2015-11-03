@@ -12,7 +12,21 @@
 @implementation KASettingsReader
 
 + (KASettings *)readSettings {
-    return [[KASettings alloc] initWithDirectories:@[@"/Users/Kenny/Desktop/Classes"] fileExtensions:@[@"h", @"swift", @"m"]];
+    NSURL *config = [NSURL fileURLWithPath:@"import_config"];
+    
+    NSError *error = nil;
+    
+    NSDictionary *settings = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:config] options:0 error:&error];
+    
+    if (!settings && error) {
+        NSLog(@"Could not read import_config file. %@", error);
+        exit(132);
+    }
+    
+    NSArray *fileExtensions = settings[@"file_extensions"];
+    NSArray *directories = settings[@"directories"];
+    
+    return [[KASettings alloc] initWithDirectories:directories fileExtensions:fileExtensions];
 }
 
 @end
