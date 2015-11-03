@@ -9,11 +9,12 @@
 #import "KAImportFixer.h"
 #import "KAImportFinder.h"
 #import "KAImportSorter.h"
-#import "KAImportReplacer.h"
+#import "KAFullContentsImportReplacerAndTransformer.h"
 #import "KASourceFileLocator.h"
 #import "KAWholeFileLoadingLineReader.h"
 #import "KASettings.h"
 #import "KASettingsReader.h"
+#import "KAImportStringTransformer.h"
 
 @implementation KAImportFixer
 
@@ -34,21 +35,20 @@
         
         NSArray *files = [sourceFileLocator files];
         fileCount += files.count;
-
+        
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
-                KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileURL:file]];
-                const NSArray *firstImports = [importFinder importStrings];
-                const NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
+                NSString *fileContents = [[NSString alloc] initWithContentsOfURL:file encoding:NSUTF8StringEncoding error:nil];
                 
-                NSInteger i = 0;
-                for (NSArray *importStrings in firstImports) {
-                    const NSInteger numberOfNewlines = [newlinesAmounts[i] integerValue];
-                    i++;
-                    
-                    importCount += importStrings.count;
-                    KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:importStrings];
-                    [[[KAImportReplacer alloc] initWithOriginalImportStrings:importStrings sorted:[sorter sortedImports] fileURL:file numberOfNewlines:numberOfNewlines] replace];
+                KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileContents:fileContents]];
+                NSArray *firstImports = [importFinder importStrings];
+                NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
+                
+                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents];
+                
+                importCount += [importReplacer importAmount];
+                if ([importReplacer didChangeAnyCharacters]) {
+                    [[importReplacer transformedString] writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 }
             });
         }

@@ -1,46 +1,41 @@
 //
-//  KAImportReplacer.m
+//  KAImportStringTransformer.m
 //  ImportFixer
 //
-//  Created by Kenneth Parker Ackerson on 10/11/15.
+//  Created by Kenneth Parker Ackerson on 11/3/15.
 //  Copyright © 2015 Kenneth Parker Ackerson. All rights reserved.
 //
 
-#import "KAImportReplacer.h"
+#import "KAImportStringTransformer.h"
 #import "KAImportStatement.h"
 
-@interface KAImportReplacer ()
+@interface KAImportStringTransformer ()
 
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *originalImports;
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *sortedImportStatements;
-@property (nonatomic, readonly) NSURL *fileURL;
+@property (nonatomic, readonly) NSString *originalContents;
 @property (nonatomic, readonly) NSInteger numberOfNewlines;
 
 @end
 
-@implementation KAImportReplacer
+@implementation KAImportStringTransformer
 
-- (instancetype)initWithOriginalImportStrings:(NSArray <KAImportStatement *> *)importStrings sorted:(NSArray <KAImportStatement *> *)sortedImportStatements fileURL:(NSURL *)fileURL numberOfNewlines:(NSInteger)numberOfNewlines {
+- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements originalContents:(NSString *)originalContents numberOfNewlines:(NSInteger)numberOfNewlines {
     self = [super init];
     
-    _fileURL = fileURL;
-    _originalImports = [importStrings copy];
-    _sortedImportStatements = [sortedImportStatements copy];
-    _numberOfNewlines = numberOfNewlines;
+    if (self) {
+        _originalImports = [originalImports copy];
+        _sortedImportStatements = [sortedImportStatements copy];
+        _originalContents = originalContents;
+        _numberOfNewlines = numberOfNewlines;
+    }
     
     return self;
 }
 
-- (NSString *)fileContents {
-    return [[NSString alloc] initWithContentsOfURL:_fileURL encoding:NSUTF8StringEncoding error:nil];
-}
-
-- (void)replace {
-    if (_originalImports.count == 0) { return; }
-    if ([_originalImports isEqual:_sortedImportStatements]) { return; }
+- (NSString *)transformedString {
+    NSMutableString *fileContents = _originalContents.mutableCopy;
     
-    NSMutableString *fileContents = [self fileContents].mutableCopy;
-
     NSRange rangeOfFirstObject = [fileContents rangeOfString:[(KAImportStatement *)(_originalImports.firstObject) importString]];
     
     for (KAImportStatement *importString in _originalImports) {
@@ -79,8 +74,9 @@
             endSearchForNewLines = YES;
         }
     }
-    
-    [fileContents writeToURL:self.fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+
+    return [fileContents copy];
 }
+
 
 @end

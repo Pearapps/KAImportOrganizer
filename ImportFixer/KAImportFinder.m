@@ -55,11 +55,15 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
     NSInteger currentCountOfNewLines = 0;
     NSInteger batchedCountOfNewLines = 0;
     BOOL hasFoundImportYet = NO;
-        
+    
+    void (^replace)(NSInteger) = ^void(NSInteger currentCountOfNewLines) {
+        [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count - 1 withObject:@(currentCountOfNewLines)];
+    };
+    
     while ([lineReader hasAnotherLine]) {
         NSString *line = [lineReader readLine];
         
-        [rangeOfNewLines replaceObjectAtIndex:rangeOfNewLines.count - 1 withObject:@(currentCountOfNewLines)];
+        replace(currentCountOfNewLines);
         
         if (stringContainsOneOfTheseStrings(line, preprocessorConditionals)) {
             currentLinesArray = [NSMutableArray new];
@@ -73,6 +77,7 @@ static inline BOOL stringContainsOneOfTheseStrings(NSString *string, NSArray *ot
             currentCountOfNewLines += batchedCountOfNewLines;
             batchedCountOfNewLines = 0;
             [currentLinesArray addObject:[[KAImportStatement alloc] initWithImportString:line]];
+            replace(currentCountOfNewLines);
         }
         else if ([line isEqual:@"\n"]) {
             if (hasFoundImportYet) { batchedCountOfNewLines++; }
