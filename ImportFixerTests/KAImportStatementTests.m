@@ -66,5 +66,4 @@
     XCTAssert(importStatement.importType == KAImportTypePound);
 }
 
-
 @end
