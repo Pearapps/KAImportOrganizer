@@ -42,7 +42,7 @@ static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *seco
             NSString *firstString = first.importParts[i];
             NSString *secondString = second.importParts[i];
             
-            result = [firstString compare:secondString];
+            result = [firstString compare:secondString options:NSCaseInsensitiveSearch];
             
             i++;
         }

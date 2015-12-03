@@ -14,5 +14,6 @@
 - (instancetype)initWithLineReader:(id <KALineReader>)lineReader;
 
 - (NSArray *)importStrings;
+- (NSArray *)numbersOfNewLines;
 
 @end

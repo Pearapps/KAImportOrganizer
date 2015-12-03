@@ -10,8 +10,6 @@
 
 @interface KAWholeFileLoadingLineReader ()
 
-@property (nonatomic, readonly) NSURL *fileURL;
-
 @property (nonatomic, readonly) NSArray *allLines;
 
 @property (nonatomic) NSInteger currentOffset;
@@ -20,19 +18,12 @@
 
 @implementation KAWholeFileLoadingLineReader
 
-- (instancetype)initWithFileURL:(NSURL *)URL {
+- (instancetype)initWithFileContents:(NSString *)fileContents {
     self = [super init];
-    
-    _fileURL = URL;
-    NSString *fileContents = [self fileContents];
     
     _allLines = [fileContents componentsSeparatedByString:@"\n"];
     
     return self;
-}
-
-- (NSString *)fileContents {
-    return [[NSString alloc] initWithContentsOfURL:_fileURL encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (NSString *)readLine {
