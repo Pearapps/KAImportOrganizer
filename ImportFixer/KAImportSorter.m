@@ -33,13 +33,6 @@ static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *seco
     const KAImportType firstType = first.importType;
     const KAImportType secondType = second.importType;
     
-    if (firstType == KAImportTypeAtSign && secondType == KAImportTypePound) {
-        return YES;
-    }
-    else if (firstType == KAImportTypePound && secondType == KAImportTypeAtSign) {
-        return NO;
-    }
-    
     if (firstType == secondType) {
         NSInteger i = 0;
         NSComparisonResult result = NSOrderedSame;
@@ -57,19 +50,52 @@ static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *seco
     return NO;
 }
 
-- (nonnull NSArray *)sortedImports {
-    return [_imports sortedArrayUsingComparator:^NSComparisonResult(KAImportStatement * _Nonnull obj1, KAImportStatement * _Nonnull obj2) {
-        if ([obj1.importString isEqualToString:obj2.importString]) {
-            return NSOrderedSame;
+- (nonnull NSArray <KAImportStatement *> *)sortedImports {
+    NSArray <KAImportStatement *> * sortedImports = ^ NSArray <KAImportStatement *> * {
+        NSArray <KAImportStatement *> *imports = [_imports sortedArrayUsingComparator:^NSComparisonResult(KAImportStatement * _Nonnull obj1, KAImportStatement * _Nonnull obj2) {
+            if ([obj1.importString isEqualToString:obj2.importString]) {
+                return NSOrderedSame;
+            }
+            
+            if (isAscending(obj1, obj2)) {
+                return NSOrderedAscending;
+            }
+            else {
+                return NSOrderedDescending;
+            }
+        }];
+        
+        if (self.sortOrderOfImportType) {
+            NSInteger (^IndexFinder)(KAImportType importType) = ^ NSInteger (KAImportType importType) {
+                for (NSInteger i = 0; i < self.sortOrderOfImportType.count; i++) {
+                    const KAImportTypeModel *typeModel = self.sortOrderOfImportType[i];
+                    
+                    if (typeModel.importType == importType) {
+                        return i;
+                    }
+                }
+                
+                return -1;
+            };
+            
+            imports = [imports sortedArrayUsingComparator:^NSComparisonResult(KAImportStatement * _Nonnull obj1, KAImportStatement *  _Nonnull obj2) {
+                if (obj1.importType == obj2.importType) {
+                    return NSOrderedSame;
+                }
+                
+                if (IndexFinder(obj1.importType) < IndexFinder(obj2.importType)) {
+                    return NSOrderedAscending;
+                }
+                else {
+                    return NSOrderedDescending;
+                }
+            }];
         }
         
-        if (isAscending(obj1, obj2)) {
-            return NSOrderedAscending;
-        }
-        else {
-            return NSOrderedDescending;
-        }
-    }];
+        return imports;
+    }();
+    
+    return sortedImports;
 }
 
 @end
