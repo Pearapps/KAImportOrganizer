@@ -15,6 +15,7 @@
 @property (nonatomic, nonnull, readonly) NSArray *fileExtensions;
 @property (nonatomic, nonnull, readonly) NSArray *directories;
 @property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
+
 @property (nonatomic, nullable, readonly, copy) NSArray <NSString *> *sortOrder;
 
 @end
