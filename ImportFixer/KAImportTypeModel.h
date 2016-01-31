@@ -17,6 +17,6 @@
 
 - (nonnull instancetype)initWithImportTypeString:(nonnull NSString *)importTypeString;
 
-- (KAImportType)importType;
+@property (nonatomic, readonly) KAImportType importType;
 
 @end

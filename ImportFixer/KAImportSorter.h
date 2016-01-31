@@ -8,11 +8,12 @@
 
 @import Foundation;
 #import "KAImportStatement.h"
+#import "KAImportTypeModel.h"
 
 @interface KAImportSorter : NSObject
 
-- (instancetype)initWithImports:(NSArray <NSString *> *)imports;
+- (nonnull instancetype)initWithImports:(nonnull NSArray <KAImportStatement *> *)imports sortOrderOfImportType:(nullable NSArray <KAImportTypeModel *> *)sortOrderOfImportType;
 
-- (NSArray *)sortedImports;
+- (nonnull NSArray *)sortedImports;
 
 @end

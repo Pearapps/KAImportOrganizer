@@ -22,12 +22,13 @@
     
     if (self) {
         _importTypeString = [importTypeString copy];
+        _importType = [self importTypeFromString];
     }
     
     return self;
 }
 
-- (KAImportType)importType {
+- (KAImportType)importTypeFromString {
     if ([self.importTypeString isEqualToString:@"PoundLibrary"]) {
         return KAImportTypePoundLibrary;
     }

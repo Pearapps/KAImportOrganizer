@@ -10,16 +10,21 @@
 
 @interface KAImportSorter ()
 
-@property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *imports;
+@property (nonatomic, copy, readonly, nonnull) NSArray <KAImportStatement *> *imports;
+@property (nonatomic, copy, readonly, nullable) NSArray <KAImportTypeModel *> *sortOrderOfImportType;
 
 @end
 
 @implementation KAImportSorter
 
-- (instancetype)initWithImports:(NSArray <KAImportStatement *> *)imports {
+- (nonnull instancetype)initWithImports:(nonnull NSArray <KAImportStatement *> *)imports sortOrderOfImportType:(nullable NSArray <KAImportTypeModel *> *)sortOrderOfImportType {
+    NSParameterAssert(imports);
     self = [super init];
     
-    _imports = [imports copy];
+    if (self) {
+        _imports = [imports copy];
+        _sortOrderOfImportType = [sortOrderOfImportType copy];
+    }
     
     return self;
 }
@@ -52,7 +57,7 @@ static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *seco
     return NO;
 }
 
-- (NSArray *)sortedImports {
+- (nonnull NSArray *)sortedImports {
     return [_imports sortedArrayUsingComparator:^NSComparisonResult(KAImportStatement * _Nonnull obj1, KAImportStatement * _Nonnull obj2) {
         if ([obj1.importString isEqualToString:obj2.importString]) {
             return NSOrderedSame;
