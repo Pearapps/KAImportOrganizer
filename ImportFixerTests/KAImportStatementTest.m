@@ -39,4 +39,12 @@
     }
 }
 
+- (void)testImportInsideOfModuleNameDoesNotImpactParsingObjectiveCPound {
+    KAImportStatement *statement = [[KAImportStatement alloc] initWithImportString:@"#import \"MyImport.h\""];
+    
+    for (NSString *string in statement.importParts) {
+        XCTAssert([string isEqualToString:@"MyImport"]);
+    }
+}
+
 @end
