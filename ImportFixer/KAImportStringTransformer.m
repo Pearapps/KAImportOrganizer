@@ -15,12 +15,17 @@
 @property (nonatomic, copy, readonly) NSArray <KAImportStatement *> *sortedImportStatements;
 @property (nonatomic, readonly) NSString *originalContents;
 @property (nonatomic, readonly) NSInteger numberOfNewlines;
+@property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
 
 @end
 
 @implementation KAImportStringTransformer
 
-- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements originalContents:(NSString *)originalContents numberOfNewlines:(NSInteger)numberOfNewlines {
+- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports
+                 sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements
+                       originalContents:(NSString *)originalContents
+                       numberOfNewlines:(NSInteger)numberOfNewlines
+          insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes {
     self = [super init];
     
     if (self) {
@@ -28,6 +33,7 @@
         _sortedImportStatements = [sortedImportStatements copy];
         _originalContents = originalContents;
         _numberOfNewlines = numberOfNewlines;
+        _insertsNewLinesInBetweenTypes = insertsNewLinesInBetweenTypes;
     }
     
     return self;
@@ -52,8 +58,43 @@
     }
     
     NSArray <NSString *> *newImportStrings = [_sortedImportStatements valueForKey:@"importString"];
-    NSString *importString = [newImportStrings componentsJoinedByString:@""];
     
+    NSMutableArray <NSNumber *> *indicesOfTypeChange = [NSMutableArray new];
+    
+    if (self.insertsNewLinesInBetweenTypes) {
+        /**
+         *  Initial value has no meaning.
+         */
+        __block KAImportType lastImportType = KAImportTypeAtSign;
+        [self.sortedImportStatements enumerateObjectsUsingBlock:^(KAImportStatement * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (idx == 0) {
+                lastImportType = obj.importType;
+                return;
+            }
+            
+            if (lastImportType != obj.importType) {
+                [indicesOfTypeChange addObject:@(idx)];
+                
+                lastImportType = obj.importType;
+            }
+        }];
+        
+        NSInteger numberAdjusted = 0;
+        if (indicesOfTypeChange.count > 0) {
+            
+            for (NSNumber *number in indicesOfTypeChange) {
+                NSInteger index = [number integerValue] + numberAdjusted;
+                
+                NSMutableArray *newImportStringsMutable = [newImportStrings mutableCopy];
+                [newImportStringsMutable insertObject:@"\n" atIndex:index];
+                newImportStrings = [newImportStringsMutable copy];
+                numberAdjusted += 1;
+            }
+            
+        }
+    }
+    
+    NSString *importString = [newImportStrings componentsJoinedByString:@""];
     [fileContents insertString:importString atIndex:rangeOfFirstObject.location];
     
     BOOL endSearchForNewLines = NO;

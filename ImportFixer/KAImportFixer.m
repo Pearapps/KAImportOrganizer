@@ -38,13 +38,17 @@
         
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
+                
                 NSString *fileContents = [[NSString alloc] initWithContentsOfURL:file encoding:NSUTF8StringEncoding error:nil];
                 
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileContents:fileContents]];
                 NSArray *firstImports = [importFinder importStrings];
                 NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
-                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents];
+                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports
+                                                                                                                               numbersOfNewlines:newlinesAmounts
+                                                                                                                                originalContents:fileContents insertsNewLinesInBetweenTypes:NO
+                                                                                                                           sortOrderOfImportType:settings.sortOrder];
                 
                 importCount += [importReplacer importAmount];
                 if ([importReplacer didChangeAnyCharacters]) {

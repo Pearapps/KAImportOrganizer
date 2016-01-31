@@ -16,13 +16,18 @@
     _importString = importString;
     _importType = [self importTypeForImportString:importString];
     
-    _importParts = [[self importStringByTrimmingTokensFromImportString:importString] componentsSeparatedByString:[self seperatorForSpecificFileImportInsideOfFrameworkOfType:_importType]];
+    _importParts = [[self importStringByTrimmingTokensFromImportString:[self importStringByRemovingImportPartFromImportString:importString]] componentsSeparatedByString:[self seperatorForSpecificFileImportInsideOfFrameworkOfType:_importType]];
     
     return self;
 }
 
+- (NSString *)importStringByRemovingImportPartFromImportString:(NSString *)importString {
+    NSRange range = [importString rangeOfString:@"import "];
+    return [importString substringFromIndex:range.location + range.length];
+}
+
 - (NSString *)importStringByTrimmingTokensFromImportString:(NSString *)importString {
-    const NSArray *strings = @[@"<", @">", @"\""];
+    const NSArray *strings = @[@"<", @">", @"\"", @";", @".h"];
     
     NSString *returnString = importString;
     
@@ -40,7 +45,7 @@
     
     if ([object isKindOfClass:[KAImportStatement class]]) {
         KAImportStatement *import = (KAImportStatement *)object;
-        if (!import.importType != self.importType) {
+        if (import.importType != self.importType) {
             return NO;
         }
         return [self.importString isEqualToString:import.importString];
@@ -51,6 +56,10 @@
 
 - (KAImportType)importTypeForImportString:(NSString *)importString {
     if ([importString characterAtIndex:0] == '#') {
+        if ([importString containsString:@"<"] && [importString containsString:@">"]) {
+            return KAImportTypePoundLibrary;
+        }
+        
         return KAImportTypePound;
     }
     else if ([importString characterAtIndex:0] == '@' && ![importString containsString:@"@testable"]) {
@@ -64,8 +73,11 @@
 - (NSString *)seperatorForSpecificFileImportInsideOfFrameworkOfType:(KAImportType)importType {
     switch (importType) {
         case KAImportTypePound:
+            // fall through on purpose
+        case KAImportTypePoundLibrary:
             return @"/";
         case KAImportTypeSwift:
+            // fall through on purpose
         case KAImportTypeAtSign:
             return @".";
     }

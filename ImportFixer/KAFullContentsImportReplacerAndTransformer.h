@@ -8,13 +8,18 @@
 
 @import Foundation;
 #import "KAStringTransformer.h"
+#import "KAImportTypeModel.h"
 
 @class KAImportStatement;
 @interface KAFullContentsImportReplacerAndTransformer : NSObject <KAStringTransformer>
 
-- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents;
+- (nonnull instancetype)initWithImports:(nonnull NSArray <NSArray <KAImportStatement *> *> *)imports
+                      numbersOfNewlines:(nullable NSArray *)numbersOfNewlines
+                       originalContents:(nonnull NSString *)originalContents
+          insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes
+                  sortOrderOfImportType:(nullable NSArray <KAImportTypeModel *> *)sortOrderOfImportType;
 
-- (NSString *)transformedString;
+- (nonnull NSString *)transformedString;
 
 - (BOOL)didChangeAnyCharacters;
 

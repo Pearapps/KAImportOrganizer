@@ -33,7 +33,7 @@
     "import Kenny\n"
     "import Foundation\n";
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:0 originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:nil originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -66,7 +66,7 @@
     "\n"
     "import Foundation\n";
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -100,7 +100,7 @@
     "\n"
     "import Foundation\n";
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -135,7 +135,7 @@
     "\n"
     "import Foundation\n";
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -179,7 +179,7 @@
     "#endif\n"
     ;
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -228,7 +228,7 @@
     "#endif\n"
     ;
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -288,7 +288,7 @@
     "#import \"hello.h\"\n"
     ;
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -352,7 +352,7 @@
     "#import \"hello.h\"\n"
     ;
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"
@@ -421,7 +421,7 @@
     "#import \"hello.h\"\n"
     ;
     
-    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents] transformedString];
+    NSString *transformedString = [[[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:originalImports numbersOfNewlines:numbers originalContents:contents insertsNewLinesInBetweenTypes:NO sortOrderOfImportType:nil] transformedString];
     
     NSString *projectedOutcome = @"//Some stuff\n"
     "// hello\n"

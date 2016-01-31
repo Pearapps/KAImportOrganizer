@@ -7,12 +7,7 @@
 //
 
 @import Foundation;
-
-typedef NS_ENUM(char, KAImportType) {
-    KAImportTypePound,
-    KAImportTypeAtSign,
-    KAImportTypeSwift
-};
+#import "KAImportType.h"
 
 @interface KAImportStatement : NSObject
 

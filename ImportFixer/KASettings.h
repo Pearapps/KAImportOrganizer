@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KAImportTypeModel.h"
 
 @interface KASettings : NSObject
 
-- (instancetype)initWithDirectories:(NSArray *)directories fileExtensions:(NSArray *)fileExtensions;
+- (nonnull instancetype)initWithFileExtensions:(nonnull NSArray *)fileExtensions directories:(nonnull NSArray *)directories insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes sortOrder:(nullable NSArray <KAImportTypeModel *> *)sortOrder;
 
-@property (nonatomic, readonly) NSArray *fileExtensions;
-@property (nonatomic, readonly) NSArray *directories;
+@property (nonatomic, nonnull, readonly, copy) NSArray *fileExtensions;
+@property (nonatomic, nonnull, readonly, copy) NSArray *directories;
+@property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
+
+@property (nonatomic, nullable, readonly, copy) NSArray <KAImportTypeModel *> *sortOrder;
 
 @end
