@@ -66,7 +66,7 @@
     KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:imports
                                                sortOrderOfImportType:nil];
     
-    NSArray *sortedPotentially = @[[[KAImportStatement alloc] initWithImportString:@"import AppKit.AppKit\n"],
+    NSArray <KAImportStatement *> *sortedPotentially = @[[[KAImportStatement alloc] initWithImportString:@"import AppKit.AppKit\n"],
                                    [[KAImportStatement alloc] initWithImportString:@"@testable import AppKit.Phoenix\n"],
                                    [[KAImportStatement alloc] initWithImportString:@"import AppKit\n"]];
     
@@ -88,6 +88,21 @@
 
 #pragma mark - Sort import type tests
 
+- (void)testBasicSortingWithImportTypeSortsMakeSureSwiftIsntAffected {
+    NSArray <KAImportStatement *> *imports = @[[[KAImportStatement alloc] initWithImportString:@"import CAnny\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"import BAnny\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"import AAnny\n"]];
+    
+    KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:imports
+                                               sortOrderOfImportType:@[
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypeAtSign],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePoundLibrary],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePound]
+                                                                       ]];
+    
+    XCTAssert([[sorter sortedImports] isEqual:imports.reverseObjectEnumerator.allObjects]);
+}
+
 - (void)testBasicSortingWithImportTypeSorts {
     NSArray <KAImportStatement *> *imports = @[[[KAImportStatement alloc] initWithImportString:@"@import CAnny;\n"],
                                                [[KAImportStatement alloc] initWithImportString:@"#import <BAnny>\n"],
@@ -101,6 +116,26 @@
                                                                        ]];
     
     XCTAssert([[sorter sortedImports] isEqual:imports]);
+}
+
+- (void)testBasicSortingWithImportTypeSortsOfDifferentOrder {
+    NSArray <KAImportStatement *> *imports = @[[[KAImportStatement alloc] initWithImportString:@"@import CAnny;\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"#import <BAnny>\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"#import AAnny.h\n"]];
+    
+    KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:imports.reverseObjectEnumerator.allObjects
+                                               sortOrderOfImportType:@[
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypeAtSign],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePound],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePoundLibrary],
+                                                                       ]];
+    
+    NSArray <KAImportStatement *> *potentiallySortedImports = @[[[KAImportStatement alloc] initWithImportString:@"@import CAnny;\n"],
+                                                                [[KAImportStatement alloc] initWithImportString:@"#import AAnny.h\n"],
+                                                                [[KAImportStatement alloc] initWithImportString:@"#import <BAnny>\n"]
+                                                                ];
+    
+    XCTAssert([[sorter sortedImports] isEqual:potentiallySortedImports]);
 }
 
 - (void)testBasicSortingWithImportTypeSortsSameName {

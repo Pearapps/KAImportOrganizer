@@ -30,19 +30,15 @@
 }
 
 static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *second) {
-    
     NSInteger i = 0;
     NSComparisonResult result = NSOrderedSame;
     while (result == NSOrderedSame && i < first.importParts.count && i < second.importParts.count) {
         NSString *firstString = first.importParts[i];
         NSString *secondString = second.importParts[i];
-        
-        NSLog(@"%@ -- %@", firstString, secondString);
-        
+    
         result = [firstString compare:secondString options:NSCaseInsensitiveSearch];
         
         i++;
-        
     }
     
     return result == NSOrderedAscending;
@@ -64,6 +60,12 @@ static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *seco
         }];
         
         if (self.sortOrderOfImportType) {
+            for (KAImportStatement *importStatement in imports) {
+                if (importStatement.importType == KAImportTypeSwift) {
+                    return imports;
+                }
+            }
+            
             NSInteger (^IndexFinder)(KAImportType importType) = ^ NSInteger (KAImportType importType) {
                 for (NSInteger i = 0; i < self.sortOrderOfImportType.count; i++) {
                     const KAImportTypeModel *typeModel = self.sortOrderOfImportType[i];

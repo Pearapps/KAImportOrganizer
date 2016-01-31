@@ -38,6 +38,7 @@
         
         for (NSURL *file in files) {
             dispatch_group_async(group, queue, ^{
+                
                 NSString *fileContents = [[NSString alloc] initWithContentsOfURL:file encoding:NSUTF8StringEncoding error:nil];
                 
                 KAImportFinder *importFinder = [[KAImportFinder alloc] initWithLineReader:[[KAWholeFileLoadingLineReader alloc] initWithFileContents:fileContents]];
