@@ -30,6 +30,7 @@
 		B94D39B01BCAF7C2002D70E2 /* KASettingsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */; };
 		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; };
 		B9A41E431C5DADA2000F5407 /* KAImportTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A41E421C5DADA2000F5407 /* KAImportTypeModel.m */; };
+		B9A41E451C5DB966000F5407 /* KAImportSorterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A41E441C5DB966000F5407 /* KAImportSorterTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		B9A41E3F1C5DAC98000F5407 /* KAImportType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KAImportType.h; sourceTree = "<group>"; };
 		B9A41E411C5DADA2000F5407 /* KAImportTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAImportTypeModel.h; sourceTree = "<group>"; };
 		B9A41E421C5DADA2000F5407 /* KAImportTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportTypeModel.m; sourceTree = "<group>"; };
+		B9A41E441C5DB966000F5407 /* KAImportSorterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAImportSorterTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		B94BD54C1BE852E500A54D84 /* ImportFixerTests */ = {
 			isa = PBXGroup;
 			children = (
+				B9A41E441C5DB966000F5407 /* KAImportSorterTests.m */,
 				B94BD56C1BE8F42C00A54D84 /* KAFullContentImportReplacerAndTransformerTests.m */,
 				B94BD56B1BE8F3F800A54D84 /* Direct KAImportStringTransformer */,
 				B94BD55F1BE85EDB00A54D84 /* KAImportFinder */,
@@ -376,6 +379,7 @@
 				B94BD5691BE8831E00A54D84 /* KAImportStringTransformerTests.m in Sources */,
 				B94BD5591BE85DF300A54D84 /* KAImportFinderTests.m in Sources */,
 				B94BD5621BE85F4000A54D84 /* KAArrayBasedLineReader.m in Sources */,
+				B9A41E451C5DB966000F5407 /* KAImportSorterTests.m in Sources */,
 				B94BD54E1BE852E500A54D84 /* KAImportStatementTests.m in Sources */,
 				B94BD56D1BE8F42C00A54D84 /* KAFullContentImportReplacerAndTransformerTests.m in Sources */,
 			);

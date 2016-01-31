@@ -16,13 +16,18 @@
     _importString = importString;
     _importType = [self importTypeForImportString:importString];
     
-    _importParts = [[self importStringByTrimmingTokensFromImportString:importString] componentsSeparatedByString:[self seperatorForSpecificFileImportInsideOfFrameworkOfType:_importType]];
+    _importParts = [[self importStringByTrimmingTokensFromImportString:[self importStringByRemovingImportPartFromImportString:importString]] componentsSeparatedByString:[self seperatorForSpecificFileImportInsideOfFrameworkOfType:_importType]];
     
     return self;
 }
 
+- (NSString *)importStringByRemovingImportPartFromImportString:(NSString *)importString {
+    NSRange range = [importString rangeOfString:@"import "];
+    return [importString substringFromIndex:range.location + range.length];
+}
+
 - (NSString *)importStringByTrimmingTokensFromImportString:(NSString *)importString {
-    const NSArray *strings = @[@"<", @">", @"\""];
+    const NSArray *strings = @[@"<", @">", @"\"", @";"];
     
     NSString *returnString = importString;
     

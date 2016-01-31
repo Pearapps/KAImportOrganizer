@@ -30,24 +30,22 @@
 }
 
 static inline BOOL isAscending(KAImportStatement *first, KAImportStatement *second) {
-    const KAImportType firstType = first.importType;
-    const KAImportType secondType = second.importType;
     
-    if (firstType == secondType) {
-        NSInteger i = 0;
-        NSComparisonResult result = NSOrderedSame;
-        while (result == NSOrderedSame && i < first.importParts.count && i < second.importParts.count) {
-            NSString *firstString = first.importParts[i];
-            NSString *secondString = second.importParts[i];
-            
-            result = [firstString compare:secondString options:NSCaseInsensitiveSearch];
-            
-            i++;
-        }
-        return result == NSOrderedAscending;
+    NSInteger i = 0;
+    NSComparisonResult result = NSOrderedSame;
+    while (result == NSOrderedSame && i < first.importParts.count && i < second.importParts.count) {
+        NSString *firstString = first.importParts[i];
+        NSString *secondString = second.importParts[i];
+        
+        NSLog(@"%@ -- %@", firstString, secondString);
+        
+        result = [firstString compare:secondString options:NSCaseInsensitiveSearch];
+        
+        i++;
+        
     }
     
-    return NO;
+    return result == NSOrderedAscending;
 }
 
 - (nonnull NSArray <KAImportStatement *> *)sortedImports {
