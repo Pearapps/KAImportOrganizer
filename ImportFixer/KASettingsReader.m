@@ -8,6 +8,7 @@
 
 #import "KASettingsReader.h"
 #import "KASettings.h"
+#import "KAImportTypeModel.h"
 
 @implementation KASettingsReader
 
@@ -28,12 +29,26 @@
     
     const BOOL shouldInsertNewLinesBetweenImportTypes = [settings[@"insert_new_lines_between_import_types"] boolValue];
     
-   NSArray <NSString *> *sortOrder = settings[@"Objective-C_sort_order"];
+    NSArray <NSString *> *sortOrder = settings[@"Objective-C_sort_order"];
+    
+    NSArray <KAImportTypeModel *> *importModels = nil;
+    if (sortOrder.count != 3 && sortOrder.count != 0) {
+        NSLog(@"Invalid amount of sort order strings found");
+    }
+    else {
+        importModels = ^ NSArray <KAImportTypeModel *> * {
+            NSMutableArray <KAImportTypeModel *> *mutableArray = [[NSMutableArray alloc] init];
+            for (NSString *string in sortOrder) {
+                [mutableArray addObject:[[KAImportTypeModel alloc] initWithImportTypeString:string]];
+            }
+            return [mutableArray copy];
+        }();
+    }
     
     return [[KASettings alloc] initWithFileExtensions:fileExtensions
                                           directories:directories
                         insertsNewLinesInBetweenTypes:shouldInsertNewLinesBetweenImportTypes
-                                            sortOrder:sortOrder];
+                                            sortOrder:importModels];
 }
 
 @end

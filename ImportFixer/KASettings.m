@@ -10,14 +10,14 @@
 
 @implementation KASettings
 
-- (nonnull instancetype)initWithFileExtensions:(nonnull NSArray *)fileExtensions directories:(nonnull NSArray *)directories insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes sortOrder:(nullable NSArray <NSString *> *)sortOrder {
+- (nonnull instancetype)initWithFileExtensions:(nonnull NSArray *)fileExtensions directories:(nonnull NSArray *)directories insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes sortOrder:(nullable NSArray <KAImportTypeModel *> *)sortOrder {
     NSParameterAssert(fileExtensions);
     NSParameterAssert(directories);
     self = [super init];
     
     if (self) {
-        _fileExtensions = fileExtensions;
-        _directories = directories;
+        _fileExtensions = [fileExtensions copy];
+        _directories = [directories copy];
         _insertsNewLinesInBetweenTypes = insertsNewLinesInBetweenTypes;
         _sortOrder = [sortOrder copy];
     }
