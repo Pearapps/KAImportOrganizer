@@ -10,9 +10,10 @@
 
 @interface KASettings : NSObject
 
-- (instancetype)initWithDirectories:(NSArray *)directories fileExtensions:(NSArray *)fileExtensions;
+- (instancetype)initWithFileExtensions:(NSArray *)fileExtensions directories:(NSArray *)directories insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes;
 
 @property (nonatomic, readonly) NSArray *fileExtensions;
 @property (nonatomic, readonly) NSArray *directories;
+@property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
 
 @end

@@ -10,14 +10,16 @@
 
 @implementation KASettings
 
-- (instancetype)initWithDirectories:(NSArray *)directories fileExtensions:(NSArray *)fileExtensions {
+- (instancetype)initWithFileExtensions:(NSArray *)fileExtensions directories:(NSArray *)directories insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes {
     self = [super init];
     
-    _directories = directories;
-    _fileExtensions = fileExtensions;
+    if (self) {
+        _fileExtensions = fileExtensions;
+        _directories = directories;
+        _insertsNewLinesInBetweenTypes = insertsNewLinesInBetweenTypes;
+    }
     
     return self;
 }
-
 
 @end
