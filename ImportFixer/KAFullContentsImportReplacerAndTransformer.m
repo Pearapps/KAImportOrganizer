@@ -19,7 +19,6 @@
 @property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
 @property (nonatomic, copy, readonly, nullable) NSArray <KAImportTypeModel *> *sortOrderOfImportType;
 
-
 @property (nonatomic, readonly) NSString *transformedString;
 @property (nonatomic, readonly) BOOL didChangeAnyCharacters;
 @property (nonatomic, readonly) NSInteger importAmount;
