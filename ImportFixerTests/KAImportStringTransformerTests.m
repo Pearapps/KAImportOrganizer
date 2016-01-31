@@ -48,7 +48,6 @@
                                  [[KAImportStatement alloc] initWithImportString:@"#import \"Kenny.h\"\n"],
                                  [[KAImportStatement alloc] initWithImportString:@"@import Foundation;\n"],
                                  [[KAImportStatement alloc] initWithImportString:@"#import <Foundation/Foundation.h>\n"]
-
                                  ];
     
     NSArray *sortedImports = @[
@@ -121,7 +120,6 @@
     
     XCTAssert([projectedOutcome isEqualToString:transformedString]);
 }
-
 
 - (void)testBasicImportCreationSwift {
     NSArray *originalImports = @[

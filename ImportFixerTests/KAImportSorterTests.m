@@ -16,7 +16,6 @@
 @implementation KAImportSorterTests
 
 - (void)testBasicSorting {
-    
     NSArray <KAImportStatement *> *imports = @[[[KAImportStatement alloc] initWithImportString:@"@import AAnny;\n"],
                                                [[KAImportStatement alloc] initWithImportString:@"#import <Foundation/Foundation.h>\n"]];
 
