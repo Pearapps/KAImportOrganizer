@@ -101,7 +101,21 @@
                                                                        ]];
     
     XCTAssert([[sorter sortedImports] isEqual:imports]);
+}
+
+- (void)testBasicSortingWithImportTypeSortsSameName {
+    NSArray <KAImportStatement *> *imports = @[[[KAImportStatement alloc] initWithImportString:@"@import AAnny;\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"#import <AAnny>\n"],
+                                               [[KAImportStatement alloc] initWithImportString:@"#import AAnny.h\n"]];
     
+    KAImportSorter *sorter = [[KAImportSorter alloc] initWithImports:imports.reverseObjectEnumerator.allObjects
+                                               sortOrderOfImportType:@[
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypeAtSign],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePoundLibrary],
+                                                                       [[KAImportTypeModel alloc] initWithImportType:KAImportTypePound]
+                                                                       ]];
+    
+    XCTAssert([[sorter sortedImports] isEqual:imports]);
 }
 
 @end
