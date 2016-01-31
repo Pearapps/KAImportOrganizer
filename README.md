@@ -13,9 +13,10 @@ KAImportOrganizer takes all the imports in a file, coalesces them, and then sort
 
 ## Your `import_config` file
 
-Must be a JSON string. This defines what files to look at in what directories. For example:
+Must be a JSON. This defines what files to look at in what directories. For example:
 
-```{
+```
+{
 	"file_extensions" : [
 		"h",
 		"m",
@@ -24,7 +25,8 @@ Must be a JSON string. This defines what files to look at in what directories. F
 	"directories" : [
 		"Classes"
 	]
-}```
+} 
+```
 
 This looks at the Classes directory for files with either a .h, .m, or .swift file extensions, in order to organize their imports.
 
