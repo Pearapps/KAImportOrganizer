@@ -26,7 +26,7 @@
     NSArray *fileExtensions = settings[@"file_extensions"];
     NSArray *directories = settings[@"directories"];
     
-    BOOL shouldInsertNewLinesBetweenImportTypes = [settings[@"insert_new_lines_between_import_types"] boolValue];
+    const BOOL shouldInsertNewLinesBetweenImportTypes = [settings[@"insert_new_lines_between_import_types"] boolValue];
     
     return [[KASettings alloc] initWithFileExtensions:fileExtensions directories:directories insertsNewLinesInBetweenTypes:shouldInsertNewLinesBetweenImportTypes];
 }
