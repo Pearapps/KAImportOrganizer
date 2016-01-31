@@ -28,6 +28,16 @@
     return self;
 }
 
+- (instancetype)initWithImportType:(KAImportType)importType {
+    self = [super init];
+    
+    if (self) {
+        _importType = importType;
+    }
+    
+    return self;
+}
+
 - (KAImportType)importTypeFromString {
     if ([self.importTypeString isEqualToString:@"PoundLibrary"]) {
         return KAImportTypePoundLibrary;

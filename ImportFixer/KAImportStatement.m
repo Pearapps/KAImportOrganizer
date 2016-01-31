@@ -27,7 +27,7 @@
 }
 
 - (NSString *)importStringByTrimmingTokensFromImportString:(NSString *)importString {
-    const NSArray *strings = @[@"<", @">", @"\"", @";"];
+    const NSArray *strings = @[@"<", @">", @"\"", @";", @".h"];
     
     NSString *returnString = importString;
     
@@ -45,7 +45,7 @@
     
     if ([object isKindOfClass:[KAImportStatement class]]) {
         KAImportStatement *import = (KAImportStatement *)object;
-        if (!import.importType != self.importType) {
+        if (import.importType != self.importType) {
             return NO;
         }
         return [self.importString isEqualToString:import.importString];

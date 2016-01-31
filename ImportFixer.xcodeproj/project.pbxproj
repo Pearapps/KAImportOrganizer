@@ -31,6 +31,7 @@
 		B94D39B41BCAF7EA002D70E2 /* KASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B94D39B31BCAF7EA002D70E2 /* KASettings.m */; };
 		B9A41E431C5DADA2000F5407 /* KAImportTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A41E421C5DADA2000F5407 /* KAImportTypeModel.m */; };
 		B9A41E451C5DB966000F5407 /* KAImportSorterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A41E441C5DB966000F5407 /* KAImportSorterTests.m */; };
+		B9A41E461C5DC46F000F5407 /* KAImportTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A41E421C5DADA2000F5407 /* KAImportTypeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -370,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A41E461C5DC46F000F5407 /* KAImportTypeModel.m in Sources */,
 				B94BD56F1BE93C9A00A54D84 /* KAImportSorter.m in Sources */,
 				B94BD56E1BE93C0E00A54D84 /* KAFullContentsImportReplacerAndTransformer.m in Sources */,
 				B94BD56A1BE8833900A54D84 /* KAImportStringTransformer.m in Sources */,
