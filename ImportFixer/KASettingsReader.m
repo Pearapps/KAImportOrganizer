@@ -28,7 +28,12 @@
     
     const BOOL shouldInsertNewLinesBetweenImportTypes = [settings[@"insert_new_lines_between_import_types"] boolValue];
     
-    return [[KASettings alloc] initWithFileExtensions:fileExtensions directories:directories insertsNewLinesInBetweenTypes:shouldInsertNewLinesBetweenImportTypes];
+   NSArray <NSString *> *sortOrder = settings[@"Objective-C_sort_order"];
+    
+    return [[KASettings alloc] initWithFileExtensions:fileExtensions
+                                          directories:directories
+                        insertsNewLinesInBetweenTypes:shouldInsertNewLinesBetweenImportTypes
+                                            sortOrder:sortOrder];
 }
 
 @end
