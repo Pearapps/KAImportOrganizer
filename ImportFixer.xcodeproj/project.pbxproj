@@ -86,6 +86,7 @@
 		B94D39AF1BCAF7C2002D70E2 /* KASettingsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettingsReader.m; sourceTree = "<group>"; };
 		B94D39B21BCAF7EA002D70E2 /* KASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASettings.h; sourceTree = "<group>"; };
 		B94D39B31BCAF7EA002D70E2 /* KASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASettings.m; sourceTree = "<group>"; };
+		B9A41E3F1C5DAC98000F5407 /* KAImportType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KAImportType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +221,7 @@
 		B94D39921BCA1EE3002D70E2 /* ImportStatment */ = {
 			isa = PBXGroup;
 			children = (
+				B9A41E3F1C5DAC98000F5407 /* KAImportType.h */,
 				B94D398F1BCA1EDD002D70E2 /* KAImportStatement.h */,
 				B94D39901BCA1EDD002D70E2 /* KAImportStatement.m */,
 			);
@@ -521,6 +523,7 @@
 				B94BD5511BE852E500A54D84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B94D39731BCA0120002D70E2 /* Build configuration list for PBXProject "ImportFixer" */ = {
 			isa = XCConfigurationList;
