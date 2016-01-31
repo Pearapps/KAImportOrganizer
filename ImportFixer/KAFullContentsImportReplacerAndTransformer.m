@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSArray <NSArray <KAImportStatement *> *> *imports;
 @property (nonatomic, readonly) NSArray *numbersOfNewlines;
 @property (nonatomic, readonly) NSString *originalContents;
+@property (nonatomic, readonly) BOOL insertsNewLinesInBetweenTypes;
 
 @property (nonatomic, readonly) NSString *transformedString;
 @property (nonatomic, readonly) BOOL didChangeAnyCharacters;
@@ -25,13 +26,17 @@
 
 @implementation KAFullContentsImportReplacerAndTransformer
 
-- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents {
+- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports
+              numbersOfNewlines:(NSArray *)numbersOfNewlines
+               originalContents:(NSString *)originalContents
+  insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes {
     self = [super init];
     
     if (self) {
         _imports = imports;
         _numbersOfNewlines = numbersOfNewlines;
         _originalContents = originalContents;
+        _insertsNewLinesInBetweenTypes = insertsNewLinesInBetweenTypes;
         [self replace];
     }
     
@@ -57,7 +62,11 @@
             
             if (![sortedImports isEqualTo:importStrings]) {
                 everChanged = YES;
-                contents = [[[KAImportStringTransformer alloc] initWithOriginalImports:importStrings sortedImportStatements:sortedImports originalContents:contents numberOfNewlines:numberOfNewlines] transformedString];
+                contents = [[[KAImportStringTransformer alloc] initWithOriginalImports:importStrings
+                                                                sortedImportStatements:sortedImports
+                                                                      originalContents:contents
+                                                                      numberOfNewlines:numberOfNewlines
+                                                         insertsNewLinesInBetweenTypes:self.insertsNewLinesInBetweenTypes] transformedString];
             }
         }
     }

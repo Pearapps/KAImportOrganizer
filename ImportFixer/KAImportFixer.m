@@ -44,7 +44,7 @@
                 NSArray *firstImports = [importFinder importStrings];
                 NSArray *newlinesAmounts = [importFinder numbersOfNewLines];
                 
-                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents];
+                KAFullContentsImportReplacerAndTransformer *importReplacer = [[KAFullContentsImportReplacerAndTransformer alloc] initWithImports:firstImports numbersOfNewlines:newlinesAmounts originalContents:fileContents insertsNewLinesInBetweenTypes:NO];
                 
                 importCount += [importReplacer importAmount];
                 if ([importReplacer didChangeAnyCharacters]) {

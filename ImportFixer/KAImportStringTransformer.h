@@ -12,6 +12,10 @@
 
 @interface KAImportStringTransformer : NSObject <KAStringTransformer>
 
-- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements originalContents:(NSString *)originalContents numberOfNewlines:(NSInteger)numberOfNewlines;
+- (instancetype)initWithOriginalImports:(NSArray <KAImportStatement *> *)originalImports
+                 sortedImportStatements:(NSArray <KAImportStatement *> *)sortedImportStatements
+                       originalContents:(NSString *)originalContents
+                       numberOfNewlines:(NSInteger)numberOfNewlines
+          insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes;
 
 @end

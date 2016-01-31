@@ -12,7 +12,10 @@
 @class KAImportStatement;
 @interface KAFullContentsImportReplacerAndTransformer : NSObject <KAStringTransformer>
 
-- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports numbersOfNewlines:(NSArray *)numbersOfNewlines originalContents:(NSString *)originalContents;
+- (instancetype)initWithImports:(NSArray <NSArray <KAImportStatement *> *> *)imports
+              numbersOfNewlines:(NSArray *)numbersOfNewlines
+               originalContents:(NSString *)originalContents
+  insertsNewLinesInBetweenTypes:(BOOL)insertsNewLinesInBetweenTypes;
 
 - (NSString *)transformedString;
 
