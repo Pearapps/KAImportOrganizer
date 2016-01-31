@@ -40,10 +40,9 @@
     XCTAssert(importStatement.importParts.count == 1);
 }
 
-
 - (void)testImportIsRightTypeForSpecificBracketedImport {
     KAImportStatement *importStatement = [[KAImportStatement alloc] initWithImportString:@"#import <AppKit/AppKit.h>"];
-    XCTAssert(importStatement.importType == KAImportTypePound);
+    XCTAssert(importStatement.importType == KAImportTypePoundLibrary);
 }
 
 - (void)testImportIsRightTypeForSwiftModuleImport {

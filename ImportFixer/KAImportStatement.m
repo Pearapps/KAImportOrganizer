@@ -51,6 +51,10 @@
 
 - (KAImportType)importTypeForImportString:(NSString *)importString {
     if ([importString characterAtIndex:0] == '#') {
+        if ([importString containsString:@"<"] && [importString containsString:@">"]) {
+            return KAImportTypePoundLibrary;
+        }
+        
         return KAImportTypePound;
     }
     else if ([importString characterAtIndex:0] == '@' && ![importString containsString:@"@testable"]) {
@@ -64,8 +68,11 @@
 - (NSString *)seperatorForSpecificFileImportInsideOfFrameworkOfType:(KAImportType)importType {
     switch (importType) {
         case KAImportTypePound:
+            // fall through on purpose
+        case KAImportTypePoundLibrary:
             return @"/";
         case KAImportTypeSwift:
+            // fall through on purpose
         case KAImportTypeAtSign:
             return @".";
     }
