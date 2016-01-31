@@ -15,14 +15,28 @@
 
 @implementation KAImportStatementTest
 
-- (void)testImportInsideOfModuleNameDoesNotImpactParsing {
-
+- (void)testImportInsideOfModuleNameDoesNotImpactParsingSwift {
     KAImportStatement *statement = [[KAImportStatement alloc] initWithImportString:@"import myimport"];
     
     for (NSString *string in statement.importParts) {
         XCTAssert([string isEqualToString:@"myimport"]);
     }
+}
+
+- (void)testImportInsideOfModuleNameDoesNotImpactParsingObjectiveCModule {
+    KAImportStatement *statement = [[KAImportStatement alloc] initWithImportString:@"@import myimport;"];
     
+    for (NSString *string in statement.importParts) {
+        XCTAssert([string isEqualToString:@"myimport"]);
+    }
+}
+
+- (void)testImportInsideOfModuleNameDoesNotImpactParsingObjectiveCPoundLibrary {
+    KAImportStatement *statement = [[KAImportStatement alloc] initWithImportString:@"#import <MyImport/MyImport.h>"];
+    
+    for (NSString *string in statement.importParts) {
+        XCTAssert([string isEqualToString:@"MyImport"]);
+    }
 }
 
 @end
